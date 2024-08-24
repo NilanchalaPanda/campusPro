@@ -1,12 +1,12 @@
-import Link from 'next/link'
+import { CollegesSection, Footer, HeroSection, Navbar } from '../components'
 
 export default function Home() {
   return (
-    <div className='text-center'>
-      <p className='w-100vw my-10 text-center text-5xl font-bold'>
-        THIS IS THE LANDING PAGE OF THE WEBSITE.
-      </p>
-      <Link href='/chat' className='underline'>Chatting Page</Link>
+    <div className='flex flex-col items-center justify-center pb-10'>
+      <Navbar />
+      <HeroSection />
+      <CollegesSection />
+      <Footer />
     </div>
   )
 }
