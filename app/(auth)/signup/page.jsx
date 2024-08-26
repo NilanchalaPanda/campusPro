@@ -8,9 +8,9 @@ function page() {
       <Link href='/login' className='underline'>
         Login
       </Link>
-      <div className='mx-auto my-7 flex w-[95%] flex-col items-center justify-center rounded-xl border-2 border-gray-400 md:mt-20 md:w-[75%] md:flex-row'>
-        <div className='w-full space-y-6 px-6 py-5 md:w-[55%]'>
-          <p className='text-3xl font-bold md:text-[3.2rem] md:leading-[3rem]'>
+      <div className='mx-auto my-7 flex w-[95%] flex-col items-center justify-center rounded-3xl border-2 border-gray-400 md:mt-20 md:w-[75%] md:flex-row'>
+        <div className='w-full space-y-6 px-2 py-3 md:w-[55%] md:px-6 md:py-5'>
+          <p className='text-2xl font-bold md:text-[3.2rem] md:leading-[3rem]'>
             Join thousands of students who have already using CampusPro.
           </p>
 

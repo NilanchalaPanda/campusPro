@@ -5,7 +5,7 @@ import React from 'react'
 function HeroSection() {
   return (
     <main className='flex h-[80vh] flex-col items-center justify-center gap-y-5 px-4 text-center'>
-      <h1 className='text-[2.6rem] font-black leading-[3.3rem] md:text-[6rem] md:leading-[5.5rem]'>
+      <h1 className='text-[2.6rem] font-extrabold leading-[3.3rem] md:text-[6rem] md:leading-[5.5rem]'>
         The Complete AI based <br className='hidden md:block' /> College Chatbot
       </h1>
       <p className='text-md font-semibold md:text-xl'>

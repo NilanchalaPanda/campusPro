@@ -1,4 +1,6 @@
 import AdminSidebarComponent from './AdminSidebarComponent'
+import AdsComponent from './AdsComponent'
+import ChatSectionComponent from './ChatSectionComponent'
 import CollegesSection from './CollegesSection'
 import Footer from './Footer'
 import HeroSection from './HeroSection'
@@ -12,4 +14,6 @@ export {
   Footer,
   StudentSidebarComponent,
   AdminSidebarComponent,
+  ChatSectionComponent,
+  AdsComponent,
 }

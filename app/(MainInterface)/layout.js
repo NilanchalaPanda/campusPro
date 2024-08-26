@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
     <html lang='en'>
       <body className={inter.className}>
         <div className='flex h-screen'>
-          <div className='w-[14%] p-4 md:w-[8%] lg:w-[16%] xl:w-[14%]'>
+          <div className='w-[14%] p-4 border-r-2 border-black md:w-[8%] lg:w-[16%] xl:w-[14%]'>
             <Link
               href='/'
               className='flex items-center justify-center gap-2 lg:justify-start'
@@ -30,9 +30,7 @@ export default function RootLayout({ children }) {
               <AdminSidebarComponent />
             )}
           </div>
-          <div className='flex w-[86%] flex-col overflow-scroll bg-[#F7F8FA] md:w-[92%] lg:w-[84%] xl:w-[86%]'>
-            {children}
-          </div>
+          <div className='flex w-[86%] flex-col'>{children}</div>
         </div>
       </body>
     </html>
