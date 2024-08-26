@@ -1,7 +1,7 @@
 import { Inter } from 'next/font/google'
 import '../globals.css'
 import Link from 'next/link'
-import { StudentSidebarComponent } from '../components'
+import { AdminSidebarComponent, StudentSidebarComponent } from '../components'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,6 +11,7 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+  const role = 'student'
   return (
     <html lang='en'>
       <body className={inter.className}>
@@ -23,7 +24,11 @@ export default function RootLayout({ children }) {
               LO
               <span className='hidden font-bold lg:block'>CampusPro</span>
             </Link>
-            <StudentSidebarComponent />
+            {role == 'student' ? (
+              <StudentSidebarComponent />
+            ) : (
+              <AdminSidebarComponent />
+            )}
           </div>
           <div className='flex w-[86%] flex-col overflow-scroll bg-[#F7F8FA] md:w-[92%] lg:w-[84%] xl:w-[86%]'>
             {children}
