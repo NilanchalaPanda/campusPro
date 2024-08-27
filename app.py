@@ -9,13 +9,13 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_cohere.chat_models import ChatCohere
 from flask import Flask, request, jsonify
 import os
-os.environ["COHERE_API_KEY"] = ""
+os.environ["COHERE_API_KEY"] = "YOOsSYgTNPXqJ4ZO5uz9P8uO08SWNxlzUQJ6tYHF"
 
-COHERE_API_KEY = ""
+COHERE_API_KEY = "YOOsSYgTNPXqJ4ZO5uz9P8uO08SWNxlzUQJ6tYHF"
 
 from langchain_community.tools.tavily_search import TavilySearchResults
 
-os.environ["TAVILY_API_KEY"] =  "tvly-"
+os.environ["TAVILY_API_KEY"] =  "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"
 
 internet_search = TavilySearchResults()
 internet_search.name = "internet_search"
@@ -26,8 +26,7 @@ internet_search.include_domains = [
                                    "https://engineering.careers360.com/colleges/list-of-be-btech-colleges-in-rajasthan",
                                    "https://www.jagranjosh.com/colleges/btech-colleges-in-rajasthan",
                                    "https://zollege.in/btech/rajasthan-colleges",
-                                   "https://www.shiksha.com/university/vivekananda-global-university-jaipur-42525",
-                                   # TODO: Add more domains
+                                   "https://www.shiksha.com/university/*"
                                    ]
 
 
@@ -41,8 +40,9 @@ embd = CohereEmbeddings(model='embed-english-v3.0')
 llm = ChatCohere(model="command-r-plus", temperature=0.3)
 
 preamble = """
-You are an expert who answers the user's question with the most relevant datasource. you search on internet and provide the answer. you analyize the content and give most relevant
-answers
+you are an expert college advisor. you help students to find engineering colleges in rajasthan based on student marks, percentile and other queries.
+you use internet search to find answers of user queries
+
 """
 
 # Prompt template
