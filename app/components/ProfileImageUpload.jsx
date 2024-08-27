@@ -1,7 +1,4 @@
-// Profiledetails/ImageUpload.js
-import { useState } from 'react';
-
-const ImageUpload = ({ image, setImage }) => {
+const ProfileImageUpload = ({ image, setImage }) => {
   const handleImageChange = (event) => {
     if (event.target.files.length > 0) {
       setImage(URL.createObjectURL(event.target.files[0])); // Set image preview
@@ -41,4 +38,4 @@ const ImageUpload = ({ image, setImage }) => {
   );
 };
 
-export default ImageUpload;
+export default ProfileImageUpload;

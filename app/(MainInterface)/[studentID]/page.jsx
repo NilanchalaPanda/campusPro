@@ -1,13 +1,6 @@
 "use client";
-
 import { useState } from 'react';
-import BasicInfo from '../Profiledetails/BasicInfo';
-import AcademicInfo from '../Profiledetails/AcademicInfo';
-import LocationPreferences from '../Profiledetails/LocationPreferences';
-import FinancialInfo from '../Profiledetails/FinancialInfo';
-import ReservationQuotaInfo from '../Profiledetails/ReservationQuotaInfo';
-import CollegePreferences from '../Profiledetails/CollegePreferences';
-import ImageUpload from '../Profiledetails/ImageUpload'; 
+import {ProfileBasicInfo,ProfileAcademicInfo,ProfileLocationPref,ProfileFinancialInfo,ProfileReservationInfo,ProfileCollegePref,ProfileImageUpload}  from '@/app/components'
 
 const CollegeForm = () => {
   const [editMode, setEditMode] = useState(null);
@@ -29,37 +22,43 @@ const CollegeForm = () => {
           <h1 className='text-2xl font-bold text-purple-700'>
             Student Information
           </h1>
-          <ImageUpload image={image} setImage={setImage} /> {/* Use the new component */}
+          <ProfileImageUpload image={image} setImage={setImage} /> {/* Use the new component */}
         </div>
-        <BasicInfo
+
+        <ProfileBasicInfo
           editMode={editMode === 'basic-info'}
           toggleEditMode={toggleEditMode}
         />
-        <AcademicInfo
+
+        <ProfileAcademicInfo
           expanded={expanded}
           editMode={editMode}
           toggleSection={toggleSection}
           toggleEditMode={toggleEditMode}
         />
-        <LocationPreferences
+
+        <ProfileLocationPref
           expanded={expanded}
           editMode={editMode}
           toggleSection={toggleSection}
           toggleEditMode={toggleEditMode}
         />
-        <FinancialInfo
+
+        <ProfileFinancialInfo
           expanded={expanded}
           editMode={editMode}
           toggleSection={toggleSection}
           toggleEditMode={toggleEditMode}
         />
-        <ReservationQuotaInfo
+
+        <ProfileReservationInfo
           expanded={expanded}
           editMode={editMode}
           toggleSection={toggleSection}
           toggleEditMode={toggleEditMode}
         />
-        <CollegePreferences
+
+        <ProfileCollegePref
           expanded={expanded}
           editMode={editMode}
           toggleSection={toggleSection}

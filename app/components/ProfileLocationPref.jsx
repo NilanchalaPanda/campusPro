@@ -1,8 +1,8 @@
-// Profiledetails/LocationPreferences.js
+"use client";
 import { useState } from 'react';
-import { PencilIcon, TrashIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { Pencil, Trash, Plus } from 'lucide-react';
 
-const LocationPreferences = ({ expanded, editMode, toggleSection, toggleEditMode }) => {
+const ProfileLocationPref = ({ expanded, editMode, toggleSection, toggleEditMode }) => {
   const [cities, setCities] = useState(['Mumbai', 'Bangalore']);
   const [states, setStates] = useState(['Maharashtra', 'Karnataka']);
 
@@ -37,7 +37,7 @@ const LocationPreferences = ({ expanded, editMode, toggleSection, toggleEditMode
         Location Preferences
         <div className='flex items-center space-x-2'>
           {expanded === 'location-preferences' && (
-            <PencilIcon
+            <Pencil
               className={`h-6 w-6 ${editMode === 'location-preferences' ? 'text-purple-600' : 'text-purple-400'}`}
               aria-hidden='true'
               onClick={(e) => {
@@ -73,7 +73,7 @@ const LocationPreferences = ({ expanded, editMode, toggleSection, toggleEditMode
                       onChange={(e) => handleCityChange(index, e.target.value)}
                       className='w-full rounded-md border border-gray-300 p-2'
                     />
-                    <TrashIcon
+                    <Trash
                       className='h-6 w-6 text-red-500 cursor-pointer'
                       aria-hidden='true'
                       onClick={() => removeCity(index)}
@@ -84,7 +84,7 @@ const LocationPreferences = ({ expanded, editMode, toggleSection, toggleEditMode
                   className='flex items-center space-x-1 rounded-md bg-purple-600 px-4 py-2 text-white'
                   onClick={addCity}
                 >
-                  <PlusIcon className='h-5 w-5' aria-hidden='true' />
+                  <Plus className='h-5 w-5' aria-hidden='true' />
                   <span>Add City</span>
                 </button>
               </>
@@ -104,7 +104,7 @@ const LocationPreferences = ({ expanded, editMode, toggleSection, toggleEditMode
                       onChange={(e) => handleStateChange(index, e.target.value)}
                       className='w-full rounded-md border border-gray-300 p-2'
                     />
-                    <TrashIcon
+                    <Trash
                       className='h-6 w-6 text-red-500 cursor-pointer'
                       aria-hidden='true'
                       onClick={() => removeState(index)}
@@ -115,7 +115,7 @@ const LocationPreferences = ({ expanded, editMode, toggleSection, toggleEditMode
                   className='flex items-center space-x-1 rounded-md bg-purple-600 px-4 py-2 text-white'
                   onClick={addState}
                 >
-                  <PlusIcon className='h-5 w-5' aria-hidden='true' />
+                  <Plus className='h-5 w-5' aria-hidden='true' />
                   <span>Add State</span>
                 </button>
               </>
@@ -137,4 +137,4 @@ const LocationPreferences = ({ expanded, editMode, toggleSection, toggleEditMode
   );
 };
 
-export default LocationPreferences;
+export default ProfileLocationPref;

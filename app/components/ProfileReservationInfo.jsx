@@ -1,8 +1,9 @@
-// Profiledetails/ReservationQuotaInfo.js
+"use client";
 import { useState } from 'react';
-import { PencilIcon } from '@heroicons/react/24/outline';
+import { Pencil } from 'lucide-react';
 
-const ReservationQuotaInfo = ({ expanded, editMode, toggleSection, toggleEditMode }) => {
+
+const ProfileReservationInfo = ({ expanded, editMode, toggleSection, toggleEditMode }) => {
   const [casteCategory, setCasteCategory] = useState('General');
   const [reservationQuota, setReservationQuota] = useState('Yes');
   const [defenceBackground, setDefenceBackground] = useState('Yes');
@@ -25,7 +26,7 @@ const ReservationQuotaInfo = ({ expanded, editMode, toggleSection, toggleEditMod
         Reservation and Quota Information
         <div className='flex items-center space-x-2'>
           {expanded === 'reservation-quota-info' && (
-            <PencilIcon
+            <Pencil
               className={`h-6 w-6 ${editMode === 'reservation-quota-info' ? 'text-purple-600' : 'text-purple-400'}`}
               aria-hidden='true'
               onClick={(e) => {
@@ -168,4 +169,4 @@ const ReservationQuotaInfo = ({ expanded, editMode, toggleSection, toggleEditMod
   );
 };
 
-export default ReservationQuotaInfo;
+export default ProfileReservationInfo;

@@ -1,8 +1,8 @@
-// Profiledetails/AcademicInfo.js
+"use client";
 import { useState } from 'react';
-import { PencilIcon } from '@heroicons/react/24/outline';
+import { Pencil } from 'lucide-react';
 
-const AcademicInfo = ({ expanded, editMode, toggleSection, toggleEditMode }) => {
+const ProfileAcademicInfo = ({ expanded, editMode, toggleSection, toggleEditMode }) => {
   const [tenPercent, setTenPercent] = useState('85%');
   const [twelvePercent, setTwelvePercent] = useState('90%');
   const [preferredStream, setPreferredStream] = useState('Computer Science');
@@ -16,7 +16,7 @@ const AcademicInfo = ({ expanded, editMode, toggleSection, toggleEditMode }) => 
         Academic Information
         <div className='flex items-center space-x-2'>
           {expanded === 'academic-info' && (
-            <PencilIcon
+            <Pencil
               className={`h-6 w-6 ${editMode === 'academic-info' ? 'text-purple-600' : 'text-purple-400'}`}
               aria-hidden='true'
               onClick={(e) => {
@@ -93,4 +93,4 @@ const AcademicInfo = ({ expanded, editMode, toggleSection, toggleEditMode }) => 
   );
 };
 
-export default AcademicInfo;
+export default ProfileAcademicInfo;

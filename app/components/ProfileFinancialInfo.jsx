@@ -1,8 +1,9 @@
-// Profiledetails/FinancialInfo.js
+"use client";
 import { useState } from 'react';
-import { PencilIcon } from '@heroicons/react/24/outline';
+import { Pencil } from 'lucide-react';
 
-const FinancialInfo = ({ expanded, editMode, toggleSection, toggleEditMode }) => {
+
+const ProfileFinancialInfo = ({ expanded, editMode, toggleSection, toggleEditMode }) => {
   const [income, setIncome] = useState('₹1,00,001 - ₹3,00,000');
   const [eligibleForAid, setEligibleForAid] = useState('Yes');
 
@@ -23,7 +24,7 @@ const FinancialInfo = ({ expanded, editMode, toggleSection, toggleEditMode }) =>
         Financial Information
         <div className='flex items-center space-x-2'>
           {expanded === 'financial-info' && (
-            <PencilIcon
+            <Pencil
               className={`h-6 w-6 ${editMode === 'financial-info' ? 'text-purple-600' : 'text-purple-400'}`}
               aria-hidden='true'
               onClick={(e) => {
@@ -108,4 +109,4 @@ const FinancialInfo = ({ expanded, editMode, toggleSection, toggleEditMode }) =>
   );
 };
 
-export default FinancialInfo;
+export default ProfileFinancialInfo;

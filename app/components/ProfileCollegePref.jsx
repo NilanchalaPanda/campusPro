@@ -1,8 +1,9 @@
-// Profiledetails/CollegePreferences.js
+"use client";
 import { useState } from 'react';
-import { PencilIcon } from '@heroicons/react/24/outline';
+import { Pencil } from 'lucide-react';
 
-const CollegePreferences = ({ expanded, editMode, toggleSection, toggleEditMode }) => {
+
+const ProfileCollegePref = ({ expanded, editMode, toggleSection, toggleEditMode }) => {
   const [typeOfCollege, setTypeOfCollege] = useState('Government');
   const [collegePreference, setCollegePreference] = useState('Tier 1');
   const [hostelRequirement, setHostelRequirement] = useState('Yes');
@@ -19,7 +20,7 @@ const CollegePreferences = ({ expanded, editMode, toggleSection, toggleEditMode 
         College Preferences
         <div className='flex items-center space-x-2'>
           {expanded === 'college-preferences' && (
-            <PencilIcon
+            <Pencil
               className={`h-6 w-6 ${editMode === 'college-preferences' ? 'text-purple-600' : 'text-purple-400'}`}
               aria-hidden='true'
               onClick={(e) => {
@@ -122,4 +123,4 @@ const CollegePreferences = ({ expanded, editMode, toggleSection, toggleEditMode 
   );
 };
 
-export default CollegePreferences;
+export default ProfileCollegePref;

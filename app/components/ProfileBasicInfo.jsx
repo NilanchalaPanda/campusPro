@@ -1,9 +1,10 @@
 'use client'
 import { useState } from 'react';
-import { PencilIcon } from '@heroicons/react/24/outline'
+import { Pencil } from 'lucide-react';
 
 
-function BasicInfo() {
+
+function ProfileBasicInfo() {
   const [editMode, setEditMode] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const [name, setName] = useState('John Doe');
@@ -33,7 +34,7 @@ function BasicInfo() {
         Basic Information
         <div className='flex items-center space-x-2'>
           {expanded === 'basic-info' && (
-            <PencilIcon
+            <Pencil
               className={`h-6 w-6 ${editMode ? 'text-purple-600' : 'text-purple-400'}`}
               aria-hidden='true'
               onClick={(e) => {
@@ -134,4 +135,4 @@ function BasicInfo() {
   );
 }
 
-export default BasicInfo;
+export default ProfileBasicInfo;
