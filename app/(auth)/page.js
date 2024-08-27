@@ -1,4 +1,5 @@
 import { CollegesSection, Footer, HeroSection, Navbar } from '../components'
+import AudioRecorder from '../components/AudioRecorder'
 
 export default function Home() {
   return (
@@ -6,6 +7,7 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <CollegesSection />
+      <AudioRecorder/>
       <Footer />
     </div>
   )
