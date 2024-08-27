@@ -9,13 +9,13 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_cohere.chat_models import ChatCohere
 from flask import Flask, request, jsonify
 import os
-os.environ["COHERE_API_KEY"] = "YOOsSYgTNPXqJ4ZO5uz9P8uO08SWNxlzUQJ6tYHF"
+os.environ["COHERE_API_KEY"] = ""
 
-COHERE_API_KEY = "YOOsSYgTNPXqJ4ZO5uz9P8uO08SWNxlzUQJ6tYHF"
+COHERE_API_KEY = ""
 
 from langchain_community.tools.tavily_search import TavilySearchResults
 
-os.environ["TAVILY_API_KEY"] =  "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"
+os.environ["TAVILY_API_KEY"] =  "tvly-"
 
 internet_search = TavilySearchResults()
 internet_search.name = "internet_search"
@@ -24,9 +24,15 @@ internet_search.include_domains = [
                                    "https://www.shiksha.com/engineering/colleges/b-tech-colleges-rajasthan",
                                    "https://collegedunia.com/btech/rajasthan-colleges",
                                    "https://engineering.careers360.com/colleges/list-of-be-btech-colleges-in-rajasthan",
+                                   "https://engineering.careers360.com/articles/rajasthan-btech-admission"
                                    "https://www.jagranjosh.com/colleges/btech-colleges-in-rajasthan",
                                    "https://zollege.in/btech/rajasthan-colleges",
-                                   "https://www.shiksha.com/university/*"
+                                   "https://www.shiksha.com/university/*",
+                                   "https://engineering.careers360.com/articles/reap-cutoff",
+                                   "https://engineering.careers360.com/articles/jee-main-cutoff-for-top-gftis",
+                                   "https://drive.google.com/file/d/1B4iL3qmGEmdp6LfNp5zTBHCOKcOv7Uto/view",
+                                   "https://www.getmyuni.com/articles/reap-rank-wise-colleges-list",
+                                   "https://www.collegedekho.com/articles/reap-cutoff/"
                                    ]
 
 
