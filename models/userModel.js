@@ -39,8 +39,6 @@ const UserSchema = new mongoose.Schema({
     type: [String], // Array of strings for multiple stream options
     required: true,
   },
-
-  // Entrance Exams
   examsTaken: {
     type: [
       {
@@ -57,7 +55,21 @@ const UserSchema = new mongoose.Schema({
     default: [],
   },
 
-  // Location Preferences
+  // College Preferences
+  collegeType: {
+    type: String,
+    enum: ['Government', 'Private', 'Deemed', 'Any'],
+    required: true,
+  },
+  collegeRankingPreference: {
+    type: String,
+    enum: ['Top Tier', 'Middle Tier', 'Low Tier', 'No Preference'],
+    required: true,
+  },
+  hostelRequirement: {
+    type: Boolean,
+    required: true,
+  },
   preferredStates: {
     type: [String], // Array of strings for multiple state options
     required: true,
@@ -88,22 +100,6 @@ const UserSchema = new mongoose.Schema({
     },
   },
   pwdQuota: {
-    type: Boolean,
-    required: true,
-  },
-
-  // College Preferences
-  collegeType: {
-    type: String,
-    enum: ['Government', 'Private', 'Deemed', 'Any'],
-    required: true,
-  },
-  collegeRankingPreference: {
-    type: String,
-    enum: ['Top Tier', 'Middle Tier', 'Low Tier', 'No Preference'],
-    required: true,
-  },
-  hostelRequirement: {
     type: Boolean,
     required: true,
   },
