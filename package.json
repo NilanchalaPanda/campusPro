@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
+    "axios": "^1.7.5",
     "bcryptjs": "^2.4.3",
     "lucide-react": "^0.435.0",
     "mongoose": "^8.5.4",

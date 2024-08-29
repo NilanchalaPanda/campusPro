@@ -1,24 +1,65 @@
 'use client'
 
-import { MicIcon, School2Icon, SendHorizontalIcon } from 'lucide-react'
-import { useState } from 'react'
+import { MicIcon, School2Icon, SendHorizontalIcon, MessageSquareIcon } from 'lucide-react';
+import { useState } from 'react';
+import axios from 'axios';
 
 function ChatSectionComponent() {
-  const [messages, setMessages] = useState([])
-  const [inputText, setInputText] = useState('')
-  const [responseType, setResponseType] = useState('text')
+  const [messages, setMessages] = useState([]);
+  const [inputText, setInputText] = useState('');
+  const [responseType, setResponseType] = useState('text');
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (inputText.trim()) {
-      setMessages([...messages, { type: responseType, content: inputText }])
-      setInputText('')
-      // Add your logic to send the message to the chatbot or API here.
+      // Add the user's message to the chat
+      setMessages([...messages, { type: responseType, content: inputText }]);
+
+      try {
+        // Send the message to the Flask API
+        const response = await axios.post('http://localhost:5000/search', {
+          input: inputText,
+        });
+
+        // Add the response from the backend to the chat
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { type: 'api', content: response.data.output },
+        ]);
+      } catch (error) {
+        console.error('Error sending message:', error);
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { type: 'api', content: 'Error fetching response.' },
+        ]);
+      } finally {
+        setInputText('');
+      }
     }
-  }
+  };
 
   const handleVoiceInput = () => {
     // Handle voice input logic here, using Web Speech API or a third-party service.
-  }
+  };
+
+  const handleSendWhatsAppMessage = async () => {
+    if (!inputText.trim()) return;
+
+    try {
+      // Send the WhatsApp message via the Flask API
+      const response = await axios.post('http://localhost:5000/send_whatsapp', {
+        message: inputText,
+      });
+
+      if (response.data.success) {
+        alert('WhatsApp message sent successfully!');
+      } else {
+        alert('Failed to send WhatsApp message.');
+      }
+    } catch (error) {
+      console.error('Error sending WhatsApp message:', error);
+      alert('Failed to send WhatsApp message.');
+    }
+  };
 
   return (
     <div className='flex h-full flex-col bg-gray-100 p-4'>
@@ -85,9 +126,15 @@ function ChatSectionComponent() {
         >
           <SendHorizontalIcon color='white' size={24} />
         </button>
+        <button
+          onClick={handleSendWhatsAppMessage}
+          className='flex-shrink-0 p-2 rounded-full bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500'
+        >
+          <MessageSquareIcon color='white' size={24} />
+        </button>
       </div>
     </div>
-  )
+  );
 }
 
-export default ChatSectionComponent
+export default ChatSectionComponent;

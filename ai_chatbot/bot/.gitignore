@@ -1,0 +1,39 @@
+# Python-related files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.pkl
+*.db
+*.sqlite3
+*.env
+*.venv
+*.idea/
+*.vscode/
+
+# Virtual environment
+venv/
+env/
+.venv/
+ENV/
+
+# Flask-specific
+instance/
+*.log
+
+# IDEs and editors
+.idea/
+.vscode/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Other
+*.egg-info/
+dist/
+build/
+*.egg
