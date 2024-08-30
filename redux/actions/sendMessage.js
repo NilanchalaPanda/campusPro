@@ -1,3 +1,4 @@
+import { sendChatMessageFailed, sendChatMessageStart, sendChatMessageSuccess } from "../slices/chatSlice";
 
 export function sendChatMessage(data) {
   return async function (dispatch) {
@@ -19,7 +20,7 @@ export function sendChatMessage(data) {
       const responseData = await res.json();
       
       // Assuming responseData contains a response message
-      dispatch(sendChatMessageSuccess({ input: data.message, response: responseData.response }));
+      dispatch(sendChatMessageSuccess({ input: data.message, response: responseData.output }));
     } catch (error) {
       dispatch(sendChatMessageFailed(error.message));
     }
