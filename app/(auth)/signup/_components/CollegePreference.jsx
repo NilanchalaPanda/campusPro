@@ -34,6 +34,16 @@ const CollegePreference = ({ nextStep }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
       <div>
+        <h1 className='text-3xl font-bold'>
+          Design Your Ideal College Experience
+        </h1>
+        <p className='font-semibold text-black'>
+          Define your perfect college environment, from type and ranking to
+          hostel needs and preferred locations. Customize your educational
+          blueprint.
+        </p>
+      </div>
+      <div>
         <label className='block text-gray-700'>College Type</label>
         <Controller
           name='collegeType'

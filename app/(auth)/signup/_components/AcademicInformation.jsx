@@ -43,6 +43,14 @@ const AcademicInformation = ({ nextStep }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
       <div>
+        <h1 className='text-3xl font-bold'>Blueprint Your Academic Journey</h1>
+        <p className='font-semibold text-black'>
+          Detail your educational achievements, preferred study streams, and
+          exam results to sketch out the academic path that will shape your
+          engineering career.
+        </p>
+      </div>
+      <div>
         <label className='block text-gray-700'>10th Grade Percentage</label>
         <Controller
           name='tenthGradePercentage'

@@ -47,7 +47,16 @@ const ReviewNdSubmit = () => {
 
   return (
     <div className='p-4'>
-      <h2 className='mb-4 text-xl font-semibold'>Review Your Information</h2>
+      <div>
+        <h1 className='text-3xl font-bold'>
+          Final Check: Your Engineering Master Plan
+        </h1>
+        <p className='font-semibold text-black'>
+          Review your comprehensive application to ensure every detail is
+          precise. This is your chance to make sure your engineering journey is
+          perfectly mapped out.
+        </p>
+      </div>
       <div className='space-y-4'>
         {Object.keys(formData).length > 0 ? (
           <div className='rounded-md bg-white p-4 shadow'>

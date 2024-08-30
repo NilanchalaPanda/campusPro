@@ -24,7 +24,18 @@ const BasicInformation = ({ nextStep }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
       <div>
-        <label className='block text-gray-700'>Name</label>
+        <h1 className='text-3xl font-bold'>
+          Engineering Your Future: Start with the Basics
+        </h1>
+        <p className='font-semibold text-black'>
+          Let’s lay the foundation by sharing your name, contact details, and
+          current location. Every great engineer starts with a strong base!
+        </p>
+      </div>
+      <div>
+        <label className='block font-medium text-black'>
+          Please enter your name
+        </label>
         <Controller
           name='studentName'
           control={control}
@@ -43,7 +54,9 @@ const BasicInformation = ({ nextStep }) => {
       </div>
 
       <div>
-        <label className='block text-gray-700'>Email Address</label>
+        <label className='block font-medium text-black'>
+          Please enter you email address
+        </label>
         <Controller
           name='studentEmailAddress'
           control={control}
@@ -62,7 +75,9 @@ const BasicInformation = ({ nextStep }) => {
       </div>
 
       <div>
-        <label className='block text-gray-700'>Phone Number</label>
+        <label className='block font-medium text-black'>
+          Please enter a Phone Number
+        </label>
         <Controller
           name='studentPhoneNumber'
           control={control}
@@ -81,7 +96,9 @@ const BasicInformation = ({ nextStep }) => {
       </div>
 
       <div>
-        <label className='block text-gray-700'>City</label>
+        <label className='block font-medium text-black'>
+          Please enter your City
+        </label>
         <Controller
           name='studentCurrentLocation.city'
           control={control}
@@ -102,7 +119,9 @@ const BasicInformation = ({ nextStep }) => {
       </div>
 
       <div>
-        <label className='block text-gray-700'>State</label>
+        <label className='block font-medium text-black'>
+          Please enter your State
+        </label>
         <Controller
           name='studentCurrentLocation.state'
           control={control}
@@ -124,7 +143,7 @@ const BasicInformation = ({ nextStep }) => {
 
       <button
         type='submit'
-        className='w-full rounded-md bg-indigo-600 py-2 text-white hover:bg-indigo-700'
+        className='rounded-md bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-700'
       >
         Next
       </button>
