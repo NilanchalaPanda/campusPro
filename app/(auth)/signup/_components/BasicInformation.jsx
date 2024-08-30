@@ -24,7 +24,18 @@ const BasicInformation = ({ nextStep }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
       <div>
-        <label className='block text-gray-700'>Name</label>
+        <h1 className='text-3xl font-bold'>
+          Engineering Your Future: Start with the Basics
+        </h1>
+        <p className='font-semibold text-black'>
+          Let’s lay the foundation by sharing your name, contact details, and
+          current location. Every great engineer starts with a strong base!
+        </p>
+      </div>
+      <div>
+        <label className='block font-medium text-black'>
+        Full Name
+        </label>
         <Controller
           name='studentName'
           control={control}
@@ -43,7 +54,9 @@ const BasicInformation = ({ nextStep }) => {
       </div>
 
       <div>
-        <label className='block text-gray-700'>Email Address</label>
+        <label className='block font-medium text-black'>
+           Email Address
+        </label>
         <Controller
           name='studentEmailAddress'
           control={control}
@@ -62,7 +75,9 @@ const BasicInformation = ({ nextStep }) => {
       </div>
 
       <div>
-        <label className='block text-gray-700'>Phone Number</label>
+        <label className='block font-medium text-black'>
+         Phone Number
+        </label>
         <Controller
           name='studentPhoneNumber'
           control={control}
@@ -81,7 +96,9 @@ const BasicInformation = ({ nextStep }) => {
       </div>
 
       <div>
-        <label className='block text-gray-700'>City</label>
+        <label className='block font-medium text-black'>
+            City
+        </label>
         <Controller
           name='studentCurrentLocation.city'
           control={control}
@@ -102,7 +119,9 @@ const BasicInformation = ({ nextStep }) => {
       </div>
 
       <div>
-        <label className='block text-gray-700'>State</label>
+        <label className='block font-medium text-black'>
+           State
+        </label>
         <Controller
           name='studentCurrentLocation.state'
           control={control}
@@ -122,12 +141,15 @@ const BasicInformation = ({ nextStep }) => {
         )}
       </div>
 
-      <button
-        type='submit'
-        className='w-full rounded-md bg-indigo-600 py-2 text-white hover:bg-indigo-700'
-      >
-        Next
-      </button>
+      <div className='flex justify-end'>
+        
+        <button
+          type='submit'
+          className='inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700'
+        >
+          Next
+        </button>
+      </div>
     </form>
   )
 }
