@@ -7,7 +7,7 @@ export function sendChatMessage(data) {
     try {
       const res = await fetch('https://langchain-agent-j6l2.onrender.com/search', {
         method: 'POST',
-        body: JSON.stringify({ query: data.message }),
+        body: JSON.stringify({ input: data.message }),
         headers: {
           'Content-Type': 'application/json',
         },

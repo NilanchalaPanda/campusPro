@@ -45,7 +45,7 @@ function ChatSectionComponent() {
                 </div>
                 {/* Chatbot Response */}
                 <div className='flex justify-start mt-2'>
-                  <div className='max-w-xl p-3 rounded-lg shadow-md bg-gray-300 text-gray-900'>
+                  <div className='max-w-xl p-3 rounded-lg shadow-md bg-green-300 text-gray-900'>
                     {message.response}
                   </div>
                 </div>

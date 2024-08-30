@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation'
 
 const StudentSidebarComponent = () => {
   const path = usePathname()
-  console.log(path)
+  // console.log(path)
   return (
     <div className='mt-4 flex h-[95%] flex-col justify-between'>
       <div>
