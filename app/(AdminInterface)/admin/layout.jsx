@@ -30,7 +30,7 @@ export default function AdminPage({ children }) {
             </div>
           </div>
           {/* Main Content */}
-          <main className='flex-1 p-8'>
+          <main className='h-[100vh] w-[90vw] overflow-x-auto hide-scrollbar'>
             {children}
           </main>
         </div>
