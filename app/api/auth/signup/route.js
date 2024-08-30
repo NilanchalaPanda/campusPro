@@ -61,30 +61,22 @@ export const POST = async (req, res) => {
       const messageBody = `
             Hello ${studentName},
 
-            Welcome to CampusPro! 🎓 We’re thrilled to have you on board as you embark on your educational journey. Here at CampusPro, we’re committed to providing you with the best resources and support to help you achieve your academic goals.
-
-            We've got all your important details with us:
-
-            - **Email Address:** ${studentEmailAddress}
-            - **Phone Number:** ${studentPhoneNumber}
-            - **Current Location:** ${studentCurrentLocation}
-            - **Exams Taken:** ${examsTaken.join(', ')}
-
-            Whether you're preparing for your next big exam or exploring new study opportunities, we’re here to guide you every step of the way. Our AI-driven tools are designed to help you with personalized study plans, exam tips, and real-time assistance whenever you need it.
+            Welcome to CampusPro! 🎓 We’re thrilled to have you on board as you embark on your educational journey. Here at CampusPro, we’re committed to providing you with the best resources and support to help you achieve your academic goals. Whether you're preparing for your next big exam or exploring new study opportunities, we’re here to guide you every step of the way. Our AI-driven tools are designed to help you with personalized study plans, exam tips, and real-time assistance whenever you need it.
 
             Feel free to reach out to us through this chat anytime you have questions or need assistance. We're excited to see where your hard work and dedication will take you!
 
-            Let’s achieve great things together!
+Let’s achieve great things together!
 
-            Best Regards,  
-            The CampusPro Team
+Best Regards,  
+The CampusPro Team
             `
 
+      console.log('From address :', process.env.TWILIONUMBER)
       try {
         const message = await client.messages.create({
           body: messageBody,
-          from: process.env.TWILIONUMBER,
-          to: studentPhoneNumber,
+          from: `whatsapp:${process.env.TWILIONUMBER}`,
+          to: `whatsapp:+91${studentPhoneNumber}`,
         })
 
         console.log(`Message sent with SID: ${message.sid}`)
