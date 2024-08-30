@@ -21,20 +21,20 @@ function ChatSectionComponent() {
       { label: 'Type of College', next: 'collegeType' },
     ],
     budget: [
-      { label: '₹0 - ₹2 Lakhs', next: 'end' },
-      { label: '₹2 Lakhs - ₹5 Lakhs', next: 'end' },
-      { label: '₹5 Lakhs - ₹10 Lakhs', next: 'end' },
-      { label: '₹10 Lakhs +', next: 'end' },
+      { label: '₹0 - ₹2 Lakhs', next: 'inputAvailable' },
+      { label: '₹2 Lakhs - ₹5 Lakhs', next: 'inputAvailable' },
+      { label: '₹5 Lakhs - ₹10 Lakhs', next: 'inputAvailable' },
+      { label: '₹10 Lakhs +', next: 'inputAvailable' },
     ],
     collegeType: [
-      { label: 'Government', next: 'end' },
-      { label: 'Private', next: 'end' },
+      { label: 'Government', next: 'inputAvailable' },
+      { label: 'Private', next: 'inputAvailable' },
     ],
-    location: { input: true, next: 'end' },
-    program: { input: true, next: 'end' },
-    collegeInsights: { input: true, next: 'end' },
-    freeText: { input: true, next: 'end' },
-    end: [],
+    location: { input: true, next: 'inputAvailable' },
+    program: { input: true, next: 'inputAvailable' },
+    collegeInsights: { input: true, next: 'inputAvailable' },
+    freeText: { input: true, next: 'inputAvailable' },
+    inputAvailable: { input: true, next: 'inputAvailable' }, // Keeps input available after end options
   }
 
   const [currentStep, setCurrentStep] = useState('initial')
@@ -49,18 +49,12 @@ function ChatSectionComponent() {
     setCurrentStep(selectedOption.next)
   }
 
-  const handleNextStep = (key, value) => {
-    setSelectedOptions({ ...selectedOptions, [key]: value })
-    setMessages([...messages, { type: 'text', content: value }])
-
-    setCurrentStep(questionFlow[currentStep].next)
-  }
-
   const handleSendMessage = () => {
     if (inputText.trim()) {
       setMessages([...messages, { type: 'text', content: inputText }])
       setInputText('')
-      setCurrentStep('end') // Assuming the input ends the flow
+      // Keep the input field available after sending a message
+      setCurrentStep('inputAvailable')
     }
   }
 
@@ -119,7 +113,7 @@ function ChatSectionComponent() {
             </button>
           ))}
 
-        {questionFlow[currentStep].input && (
+        {(questionFlow[currentStep].input || currentStep === 'inputAvailable') && (
           <>
             <input
               type='text'
@@ -136,8 +130,6 @@ function ChatSectionComponent() {
             </button>
           </>
         )}
-
-
       </div>
     </div>
   )
