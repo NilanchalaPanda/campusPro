@@ -28,12 +28,11 @@ const ReviewNdSubmit = () => {
       const result = await response.json()
       console.log('Submission result:', result)
 
-      // Clear local storage
+      
       if (typeof window !== 'undefined') {
         localStorage.removeItem('formData')
       }
 
-      // Clear form data context
       clearFormData()
 
       setSubmissionStatus('Submission successful!')
@@ -46,27 +45,42 @@ const ReviewNdSubmit = () => {
   }
 
   return (
-    <div className='p-4'>
-      <h2 className='mb-4 text-xl font-semibold'>Review Your Information</h2>
-      <div className='space-y-4'>
+    <div className='p-6 bg-gray-100 rounded-lg shadow-md'>
+      <div className='mb-6'>
+        <h1 className='text-3xl font-bold text-gray-800'>
+          Final Check: Your Engineering Master Plan
+        </h1>
+        <p className='mt-2 text-gray-600'>
+          Review your comprehensive application to ensure every detail is
+          precise. This is your chance to make sure your engineering journey is
+          perfectly mapped out.
+        </p>
+      </div>
+      <div className='mb-6'>
         {Object.keys(formData).length > 0 ? (
-          <div className='rounded-md bg-white p-4 shadow'>
-            <h3 className='mb-2 text-lg font-medium'>Preview:</h3>
-            <pre className='whitespace-pre-wrap'>
-              {JSON.stringify(formData, null, 2)}
-            </pre>
+          <div className='bg-white rounded-md p-4 shadow-sm'>
+            <h3 className='text-lg font-medium text-gray-700 mb-2'>Preview:</h3>
+            <pre className='whitespace-pre-wrap text-gray-800'>{JSON.stringify(formData, null, 2)}</pre>
           </div>
         ) : (
           <p className='text-gray-500'>No data available to display.</p>
         )}
       </div>
-      <button
-        onClick={handleSubmit}
-        className='mt-4 rounded-md bg-indigo-600 px-4 py-2 text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
-        disabled={isSubmitting}
-      >
-        {isSubmitting ? 'Submitting...' : 'Submit'}
-      </button>
+      <div className='flex justify-end items-center space-x-4'>
+        <button
+          onClick={handleSubmit}
+          className='bg-indigo-600 text-white rounded-md px-4 py-2 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? 'Submitting...' : 'Submit'}
+        </button>
+        <button
+          onClick={() => window.history.back()}
+          className='bg-gray-300 text-gray-800 rounded-md px-4 py-2 shadow-sm hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2'
+        >
+          Back
+        </button>
+      </div>
       {submissionStatus && (
         <p
           className={`mt-4 text-sm ${submissionStatus.includes('failed') ? 'text-red-600' : 'text-green-600'}`}
