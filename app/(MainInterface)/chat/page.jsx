@@ -30,6 +30,7 @@ function Chat() {
         }
 
         const data = await response.json();
+        console.log(data)
         // Assuming `data` contains the response message
         setChat([{ input: staticInput, response: data.response }]);
       } catch (err) {
@@ -58,6 +59,7 @@ function Chat() {
           </div>
         ))}
       </div>
+      <p>helo</p>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
     </div>
