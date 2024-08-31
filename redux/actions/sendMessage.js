@@ -21,6 +21,26 @@ export function sendChatMessage(data) {
       
       // Assuming responseData contains a response message
       dispatch(sendChatMessageSuccess({ input: data.message, response: responseData.output }));
+      const isValid = !responseData.output.startsWith("I'm sorry");
+
+      // Second API call to store data in the database
+      const storeDataRes = await fetch('http://localhost:3000/api/admin', {
+        method: 'POST',
+        body: JSON.stringify({
+          input: data.message,
+          response: responseData.output,
+          userId: data.userId,
+          isValid: isValid,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!storeDataRes.ok) {
+        throw new Error('Failed to store data');
+      }
+
     } catch (error) {
       dispatch(sendChatMessageFailed(error.message));
     }
