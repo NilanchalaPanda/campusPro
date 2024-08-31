@@ -1,15 +1,21 @@
 'use client'
+
 import { Montserrat } from 'next/font/google'
 import './globals.css'
 import { Provider } from 'react-redux'
 import store from '@/redux/store'
+import { Toaster } from 'react-hot-toast'
+import NextProvider from '@/components/NextProvider'
 const montserrat = Montserrat({ subsets: ['latin'] })
 
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <body className={montserrat.className}>
-        <Provider store={store}>{children}</Provider>
+        <Provider store={store}>
+          <NextProvider>{children}</NextProvider>
+        </Provider>
+        <Toaster />
       </body>
     </html>
   )

@@ -1,7 +1,36 @@
+'use client'
+
 import { CircleCheckBig } from 'lucide-react'
 import Link from 'next/link'
+import { useForm } from 'react-hook-form'
+import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
 
-function page() {
+const LoginPage = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+  const router = useRouter()
+
+  const onSubmit = async (data) => {
+    const res = await signIn('credentials', {
+      ...data,
+      redirect: false,
+    })
+
+    if (res?.ok) {
+      router.push('/chat')
+    }
+
+    if (res?.error) {
+      console.log('Error : ', res.error)
+      toast.error(res.error || 'Entered credentails are invalid')
+    }
+  }
+
   return (
     <div className='flex flex-col items-center justify-center'>
       <h1 className='text-3xl font-bold'>LOGIN</h1>
@@ -31,26 +60,22 @@ function page() {
         </div>
         <div className='w-full border-t-2 border-gray-400 p-5 md:w-1/2 md:border-l-2 md:border-t-0 md:p-10'>
           <div>
-            <form className='space-y-4'>
+            <form className='space-y-4' onSubmit={handleSubmit(onSubmit)}>
               <div>
                 <label className='block font-semibold text-gray-700'>
-                  First Name
+                  Name
                 </label>
                 <input
                   type='text'
                   placeholder='Enter your first name'
-                  className='mt-1 w-full rounded-md border-2 border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500'
+                  {...register('name', { required: 'Name is required' })}
+                  className={`mt-1 w-full rounded-md border-2 border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 ${
+                    errors.name ? 'border-red-500' : ''
+                  }`}
                 />
-              </div>
-              <div>
-                <label className='block font-semibold text-gray-700'>
-                  Last Name
-                </label>
-                <input
-                  type='text'
-                  placeholder='Enter your last name'
-                  className='mt-1 w-full rounded-md border-2 border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500'
-                />
+                {errors.name && (
+                  <p className='text-sm text-red-500'>{errors.name.message}</p>
+                )}
               </div>
               <div>
                 <label className='block font-semibold text-gray-700'>
@@ -59,8 +84,14 @@ function page() {
                 <input
                   type='email'
                   placeholder='Enter your email'
-                  className='mt-1 w-full rounded-md border-2 border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500'
+                  {...register('email', { required: 'Email is required' })}
+                  className={`mt-1 w-full rounded-md border-2 border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 ${
+                    errors.email ? 'border-red-500' : ''
+                  }`}
                 />
+                {errors.email && (
+                  <p className='text-sm text-red-500'>{errors.email.message}</p>
+                )}
               </div>
               <div>
                 <label className='block font-semibold text-gray-700'>
@@ -69,8 +100,16 @@ function page() {
                 <input
                   type='tel'
                   placeholder='Enter your phone number'
-                  className='mt-1 w-full rounded-md border-2 border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500'
+                  {...register('phone', {
+                    required: 'Phone number is required',
+                  })}
+                  className={`mt-1 w-full rounded-md border-2 border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-blue-500 ${
+                    errors.phone ? 'border-red-500' : ''
+                  }`}
                 />
+                {errors.phone && (
+                  <p className='text-sm text-red-500'>{errors.phone.message}</p>
+                )}
               </div>
               <button
                 type='submit'
@@ -86,4 +125,4 @@ function page() {
   )
 }
 
-export default page
+export default LoginPage

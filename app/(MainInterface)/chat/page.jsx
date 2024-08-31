@@ -1,6 +1,6 @@
 "use client"
 import {useDispatch, useSelector} from "react-redux"
-import { AdsComponent, ChatSectionComponent } from '@/app/components'
+import { AdsComponent, ChatSectionComponent } from '@/components'
 import React ,{useState, useEffect}from 'react'
 import { sendChatMessage } from "@/redux/actions/sendMessage";
 

@@ -9,15 +9,6 @@ const AdminSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  queries: {
-    type: [
-      {
-        type: mongoose.Schema.ObjectId,
-        ref: 'Query',
-      },
-    ],
-    default: [],
-  },
 })
 
 const Admin = mongoose.models.Admin || mongoose.model('Admin', AdminSchema)

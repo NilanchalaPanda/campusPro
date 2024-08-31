@@ -103,6 +103,15 @@ const UserSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
+
+  chatIDs: {
+    type: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Chat',
+      },
+    ],
+  },
 })
 
 const User = mongoose.models.User || mongoose.model('User', UserSchema)
