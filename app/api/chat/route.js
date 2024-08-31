@@ -10,10 +10,10 @@ export async function POST(request) {
   try {
     await connectToDB()
 
-    const { userID, input, response } = await request.json()
+    const { userID, input, response, isValid } = await request.json()
 
     // Validate input
-    if (!userID || !input || !response) {
+    if (!userID || !input || !response || !isValid) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 },
@@ -21,16 +21,17 @@ export async function POST(request) {
     }
 
     // Fetch the user from the session
-    const session = await getServerSession() // Adapt this to your authentication method
-    if (!session || !session.user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
+    // const session = await getServerSession() // Adapt this to your authentication method
+    // if (!session || !session.user) {
+    //   return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    // }
 
     // Create new chat document
     const newChat = new Chat({
       userID: mongoose.Types.ObjectId(userID),
       input,
       response,
+      isValid
     })
 
     const savedChat = await newChat.save()
