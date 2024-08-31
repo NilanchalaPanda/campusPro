@@ -1,55 +1,106 @@
-import { MoveUpRight } from 'lucide-react'
-import React from 'react'
+import React from "react";
+import Link from "next/link";
+import { FiTwitter, FiFacebook, FiInstagram } from "react-icons/fi";
+import Image from "next/image";
 
-function Footer() {
+// SVG Components as React Icons
+const TwitterIcon = () => <FiTwitter className="w-6 h-6" />;
+const FacebookIcon = () => <FiFacebook className="w-6 h-6" />;
+const InstagramIcon = () => <FiInstagram className="w-6 h-6" />;
+
+
+const Footer = () => {
+  // Common anchor styles
+  const anchorStyles =
+    "text-sm text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80 cursor-pointer";
+
   return (
-    <>
-      <div className='container flex w-[90vw] max-w-[90rem] flex-col items-center justify-center rounded-xl border-2 border-gray-400 md:w-[80vw] md:flex-row'>
-        <div className='w-full space-y-4 px-3 py-4 md:w-[50%] md:px-10'>
-          <h1 className='text-5xl font-bold md:text-6xl'>
-            Choose better with CampusPro
-          </h1>
-          <p className='text-md font-semibold'>
-            Craft amazing decision with the <br className='block md:hidden' />{' '}
-            power of AI
-          </p>
-        </div>
-
-        <div className='w-full border-t-2 border-gray-400 md:w-[50%] md:border-0 md:border-l-2'>
-          <div className='space-y-3 border-b-2 border-gray-400 p-5'>
-            <h1 className='flex justify-between text-2xl font-semibold'>
-              Learn more about CampusPro <MoveUpRight />{' '}
-            </h1>
-            <p className='text-md font-medium'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum
-              repellat molestias mollitia consectetur ipsa? Reiciendis aliquam,
-              nobis iusto sunt.
+    <section className="py-12 bg-gradient-to-r w-[100vw] from-fuchsia-600 to-blue-600">
+      <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+        <div className="text-center xl:flex xl:items-center xl:justify-between xl:text-left">
+          <div className="xl:flex xl:items-center xl:justify-start">
+          <Image
+          src='/logo.svg'
+          alt='Logo for the website'
+          width={30}
+          height={40}
+        />
+            <p className="mt-5 text-2xl text-white xl:ml-6 xl:mt-0">
+              CampusPro
             </p>
           </div>
-          <div className='space-y-3 p-5'>
-            <h1 className='flex justify-between text-2xl font-semibold'>
-              Talk to an Expert <MoveUpRight />{' '}
-            </h1>
-            <p>
-              mollitia consectetur ipsa? Reiciendis aliquam, nobis iusto sunt,
-              quis ex nihil error accusantium rem ipsa ullam tempore, doloribus
-              optio!
-            </p>
+
+          <div className="items-center mt-8 xl:mt-0 xl:flex xl:justify-end xl:space-x-8">
+            <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 xl:justify-end">
+              <li>
+                <Link href="/about">
+                  <span className={anchorStyles}>About</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/services">
+                  <span className={anchorStyles}>Services</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy">
+                  <span className={anchorStyles}>Privacy Policy</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms">
+                  <span className={anchorStyles}>Terms & Conditions</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/support">
+                  <span className={anchorStyles}>Support</span>
+                </Link>
+              </li>
+            </ul>
+
+            <div className="w-full h-px mt-8 mb-5 xl:w-px xl:m-0 xl:h-6 bg-gray-50/20"></div>
+
+            <ul className="flex items-center justify-center space-x-8 xl:justify-end">
+              <li>
+                <a
+                  href="https://twitter.com"
+                  title="Twitter"
+                  className="block text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <TwitterIcon />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://facebook.com"
+                  title="Facebook"
+                  className="block text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FacebookIcon />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://instagram.com"
+                  title="Instagram"
+                  className="block text-white transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <InstagramIcon />
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
+    </section>
+  );
+};
 
-      <div className='mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8'>
-        <div className='sm:flex sm:items-center sm:justify-between'>
-          <div className='flex justify-center text-black sm:justify-start'></div>
-
-          <p className='mt-4 text-center text-sm text-gray-500 lg:mt-0 lg:text-right'>
-            Copyright &copy; 2022. All rights reserved.
-          </p>
-        </div>
-      </div>
-    </>
-  )
-}
-
-export default Footer
+export default Footer;

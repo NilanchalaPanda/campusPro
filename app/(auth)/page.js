@@ -1,7 +1,9 @@
-import { Footer, Navbar } from '../../components'
+import Cta from '@/components/Cta'
+import { Navbar } from '../../components'
 import Faqs from '../../components/Faqs'
 import Features from '../../components/Features'
 import Hero from '../../components/Hero'
+import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
@@ -10,7 +12,8 @@ export default function Home() {
       <Hero />
       <Features />
       <Faqs />
-      <Footer />
+      <Cta />
+      <Footer/>
     </div>
   )
 }
