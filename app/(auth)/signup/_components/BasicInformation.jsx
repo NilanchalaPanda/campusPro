@@ -34,7 +34,7 @@ const BasicInformation = ({ nextStep }) => {
       </div>
       <div>
         <label className='block font-medium text-black'>
-        Full Name
+          Please enter your name
         </label>
         <Controller
           name='studentName'
@@ -55,7 +55,7 @@ const BasicInformation = ({ nextStep }) => {
 
       <div>
         <label className='block font-medium text-black'>
-           Email Address
+          Please enter you email address
         </label>
         <Controller
           name='studentEmailAddress'
@@ -76,7 +76,7 @@ const BasicInformation = ({ nextStep }) => {
 
       <div>
         <label className='block font-medium text-black'>
-         Phone Number
+          Please enter a Phone Number
         </label>
         <Controller
           name='studentPhoneNumber'
@@ -97,7 +97,7 @@ const BasicInformation = ({ nextStep }) => {
 
       <div>
         <label className='block font-medium text-black'>
-            City
+          Please enter your City
         </label>
         <Controller
           name='studentCurrentLocation.city'
@@ -120,7 +120,7 @@ const BasicInformation = ({ nextStep }) => {
 
       <div>
         <label className='block font-medium text-black'>
-           State
+          Please enter your State
         </label>
         <Controller
           name='studentCurrentLocation.state'
@@ -142,7 +142,6 @@ const BasicInformation = ({ nextStep }) => {
       </div>
 
       <div className='flex justify-end'>
-        
         <button
           type='submit'
           className='inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700'

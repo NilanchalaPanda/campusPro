@@ -28,6 +28,16 @@ const FinanceNdReservationInformation = ({ nextStep }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
       <div>
+        <h1 className='text-3xl font-bold'>
+          Calculate Your Financial Equation
+        </h1>
+        <p className='font-semibold text-black'>
+          Provide insights into your financial background, aid eligibility, and
+          reservation status to fine-tune your support structure and ensure a
+          smooth journey
+        </p>
+      </div>
+      <div>
         <label className='block text-gray-700'>Annual Family Income</label>
         <Controller
           name='annualFamilyIncome'
