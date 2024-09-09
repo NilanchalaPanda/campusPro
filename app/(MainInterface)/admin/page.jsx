@@ -1,17 +1,18 @@
 'use client'
 
+// import {
+//   LineChart,
+//   Line,
+//   XAxis,
+//   YAxis,
+//   CartesianGrid,
+//   Tooltip,
+//   Legend,
+//   ResponsiveContainer,
+// } from 'recharts'
 import Card from '@/components/Card'
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from 'recharts'
 import Graphs from '@/components/Graphs'
+import { useEffect, useState } from 'react'
 
 const data = [
   {
@@ -196,13 +197,33 @@ const data5 = [
   },
 ]
 
-const adminPage = () => {
+const AdminPage = () => {
+  const [userCount, setUserCount] = useState(500)
+  const [queryCount, setQueryCount] = useState(502636)
+
+  useEffect(() => {
+    const fetchUsercount = async () => {
+      try {
+        const response = await fetch('api/admin/usercount')
+        const data = await response.json()
+        setUserCount(data.userCount)
+        setQueryCount(data.queryCount)
+      } catch {
+        console.error('Failed to fetch the number of users and the query count')
+      }
+    }
+
+    fetchUsercount()
+  }, [])
+
   return (
     <div className='space-y-4 p-8'>
-      <Card subheading='No. of Users' count={120} />
-      <Card subheading='No. of Queries' count={75} />
-      <Card subheading='No. of Critical Requests' count={45} />
-      <Card subheading='Trending Topic' count={69} />
+      <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
+        <Card subheading='No. of Users' count={userCount} />
+        <Card subheading='No. of Queries' count={queryCount} />
+        <Card subheading='No. of Critical Requests' count={45} />
+        <Card subheading='Trending Topic' count={69} />
+      </div>
 
       <div className='pt-10'>
         <Graphs
@@ -217,4 +238,4 @@ const adminPage = () => {
   )
 }
 
-export default adminPage
+export default AdminPage
