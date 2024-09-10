@@ -13,7 +13,7 @@ const SignupModal = ({ isOpen, onClose }) => {
       ></div>
       <div className='relative z-10 w-80 rounded-lg bg-white p-6 shadow-lg'>
         <button
-          className='absolute right-1 top-0  rounded-full p-3 text-5xl'
+          className='absolute right-1 top-0 rounded-full p-3 text-5xl'
           onClick={onClose}
         >
           &times;

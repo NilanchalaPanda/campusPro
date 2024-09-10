@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 function Navbar() {
   return (
-    <div className='flex w-full items-center justify-between rounded-b-3xl px-14 py-5 shadow-xl shadow-gray-300'>
+    <div className='flex w-full items-center justify-between rounded-b-3xl px-14 py-5'>
       {/* LOGO */}
       <div className='flex justify-center items-center'>
         <Image

@@ -11,7 +11,7 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
-  const role = 'admin'
+  const role = 'student'
   return (
     <html lang='en'>
       <body className={inter.className}>

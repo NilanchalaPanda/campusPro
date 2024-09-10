@@ -1,15 +1,22 @@
-import { Footer, Navbar } from '../../components'
-import Faqs from '../../components/Faqs'
-import Features from '../../components/Features'
-import Hero from '../../components/Hero'
+import {
+  CTA,
+  Footer,
+  Faqs,
+  Navbar,
+  Features,
+  HeroSection,
+  Works,
+} from '../../components'
 
 export default function Home() {
   return (
-    <div className='flex flex-col items-center justify-center pb-10'>
+    <div className='flex flex-col items-center justify-center'>
       <Navbar />
-      <Hero />
+      <HeroSection />
       <Features />
+      <Works />
       <Faqs />
+      <CTA />
       <Footer />
     </div>
   )
