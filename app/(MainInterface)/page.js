@@ -24,7 +24,7 @@ export default function Home() {
       {!isModalOpen && (
         <button
           onClick={toggleModal} // Trigger modal open/close
-          className='fixed bottom-5 right-5 rounded-full border-2 border-blue-400 bg-blue-300 p-3 hover:cursor-pointer md:bottom-10 md:right-10 md:block'
+          className='fixed bottom-5 right-5 rounded-full border-2 border-purple-400 bg-purple-300 p-3 hover:cursor-pointer md:bottom-10 md:right-10 md:block'
         >
           <MessageCircleCodeIcon size={40} />
         </button>

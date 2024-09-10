@@ -14,6 +14,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import MicRecorder from 'mic-recorder-to-mp3'
 import { sendChatMessage } from '@/redux/actions/sendMessage'
+import { BeatLoader } from 'react-spinners'
 
 const faqs = [
   'How do I apply for college?',
@@ -49,10 +50,10 @@ export default function ChatSectionComponent() {
 
   const handleSendMessage = () => {
     if (inputText.trim()) {
-      const index = chatState.chat.length;
-      setLoadingIndex(index); // Set loading index for the new message
-      dispatch(sendChatMessage({ message: inputText }));
-      setInputText(''); // Clear input after sending
+      const index = chatState.chat.length
+      setLoadingIndex(index) // Set loading index for the new message
+      dispatch(sendChatMessage({ message: inputText }))
+      setInputText('') // Clear input after sending
     }
   }
 
@@ -116,9 +117,9 @@ export default function ChatSectionComponent() {
   }
 
   const handleFAQClick = (faq) => {
-    const index = chatState.chat.length;
-    setLoadingIndex(index); // Set loading index for the FAQ message
-    dispatch(sendChatMessage({ message: faq }));
+    const index = chatState.chat.length
+    setLoadingIndex(index) // Set loading index for the FAQ message
+    dispatch(sendChatMessage({ message: faq }))
   }
 
   const toggleFAQDropdown = () => {
@@ -127,7 +128,7 @@ export default function ChatSectionComponent() {
 
   return (
     <div className='flex h-full flex-col rounded-l-2xl bg-white p-4'>
-      <div className='flex-grow overflow-y-auto p-4'>
+      <div className='flex-grow overflow-y-auto py-4'>
         {chatState.chat.length === 0 && chatState.status !== 'loading' ? (
           <div className='flex h-full flex-col items-center justify-center rounded-xl bg-gray-200 p-8 text-center shadow-md'>
             <School2Icon size={48} className='text-gray-600' />
@@ -141,17 +142,17 @@ export default function ChatSectionComponent() {
               <div key={index}>
                 {/* User Message */}
                 <div className='flex justify-end'>
-                  <div className='max-w-xs rounded-lg bg-blue-500 p-3 text-white shadow-md'>
+                  <div className='max-w-xs rounded-lg bg-purple-500 p-3 text-white shadow-md'>
                     {message.input}
                   </div>
                 </div>
                 {/* Chatbot Response */}
                 <div className='mt-2 flex justify-start'>
-                  <div className='relative max-w-xs rounded-lg bg-gray-300 p-3 text-gray-900 shadow-md'>
-                    {loadingIndex === index && chatState.status === 'loading' ? (
+                  <div className='relative max-w-xs rounded-lg bg-gray-100 p-3 text-gray-900 shadow-md'>
+                    {loadingIndex === index &&
+                    chatState.status === 'loading' ? (
                       <div className='flex items-center'>
-                        <LoaderIcon className='animate-spin text-blue-500' size={24} />
-                        <span className='ml-2 text-blue-500'>Loading...</span>
+                        <BeatLoader color='purple' />
                       </div>
                     ) : (
                       message.response
@@ -170,16 +171,16 @@ export default function ChatSectionComponent() {
           </div>
         )}
       </div>
-      <div>
+      <div className='bg-white pt-4'>
         <button
           onClick={toggleFAQDropdown}
-          className='text-md flex w-full items-center justify-between rounded-lg bg-gray-200 p-4 font-semibold text-gray-700 shadow-md focus:outline-none'
+          className='text-md flex w-full items-center justify-between rounded-lg bg-gray-200 px-4 py-2 font-semibold text-gray-700 shadow-md focus:outline-none'
         >
-          Frequently Asked Questions
+          Frequently Asked Qs
           {isFAQOpen ? (
-            <ChevronUpIcon size={24} className='text-gray-500' />
-          ) : (
             <ChevronDownIcon size={24} className='text-gray-500' />
+          ) : (
+            <ChevronUpIcon size={24} className='text-gray-500' />
           )}
         </button>
         {isFAQOpen && (
@@ -188,8 +189,11 @@ export default function ChatSectionComponent() {
               {faqs.map((faq, index) => (
                 <button
                   key={index}
-                  onClick={() => handleFAQClick(faq)}
-                  className='w-full rounded-lg bg-blue-100 px-4 py-2 text-left text-blue-900 shadow-md'
+                  onClick={() => {
+                    handleFAQClick(faq)
+                    setIsFAQOpen(false)
+                  }}
+                  className='w-full rounded-lg bg-purple-100 px-4 py-2 text-left text-purple-900 shadow-md'
                 >
                   {faq}
                 </button>
@@ -198,18 +202,19 @@ export default function ChatSectionComponent() {
           </div>
         )}
       </div>
-      <div className='mt-4 flex items-center space-x-2 rounded-full border border-gray-300 bg-white p-2 shadow-md'>
+
+      <div className='mt-4 flex w-full flex-wrap items-center space-x-2 rounded-full border border-gray-300 p-2 shadow-md'>
         <input
           type='text'
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
-          className='flex-grow rounded-full border-none bg-gray-100 px-4 py-2 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500'
+          className='min-w-0 flex-1 rounded-full border-none bg-gray-100 px-4 py-2 text-gray-900 placeholder-gray-500'
           placeholder='Type a message...'
         />
         <button
           onClick={isRecording ? stopRecording : startRecording}
-          className={`flex-shrink-0 rounded-full p-2 ${isRecording ? 'bg-red-500 hover:bg-red-600' : 'hover:bg-gray-200'} focus:outline-none focus:ring-2 focus:ring-blue-500`}
+          className={`rounded-full ${isRecording ? 'bg-red-300 hover:bg-red-400' : 'hover:bg-gray-200'}`}
           disabled={isBlocked}
         >
           {isRecording ? (
@@ -220,9 +225,9 @@ export default function ChatSectionComponent() {
         </button>
         <button
           onClick={handleSendMessage}
-          className='flex-shrink-0 rounded-full bg-blue-500 p-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500'
+          className='rounded-full bg-purple-500 p-2 hover:bg-purple-600'
         >
-          <SendHorizontalIcon color='white' size={24} />
+          <SendHorizontalIcon color='white' size={20} />
         </button>
       </div>
     </div>
