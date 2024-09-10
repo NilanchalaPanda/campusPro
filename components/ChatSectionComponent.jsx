@@ -197,7 +197,7 @@ export default function ChatSectionComponent() {
     <div className='flex h-full flex-col rounded-l-2xl bg-white p-4'>
       <div
         id='chat-section'
-        className='flex-grow overflow-y-auto rounded-xl py-4 shadow-md transition-all duration-300 ease-in-out'
+        className='no-scrollbar flex-grow overflow-y-auto rounded-xl py-4 shadow-md transition-all duration-300 ease-in-out'
       >
         {chatState.chat.length === 0 && chatState.status !== 'loading' ? (
           <div className='flex h-full flex-col items-center justify-center rounded-xl bg-gray-200 p-8 text-center shadow-md'>
