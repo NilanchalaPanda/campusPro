@@ -1,32 +1,30 @@
-import { createSlice } from '@reduxjs/toolkit';
-
-const initialState = {
-  chat: [],
-  status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
-  error: null,
-};
+import { createSlice } from "@reduxjs/toolkit";
 
 const chatSlice = createSlice({
   name: 'chat',
-  initialState,
+  initialState: {
+    chat: [],
+    status: 'idle',
+    error: null,
+  },
   reducers: {
-    sendChatMessageStart: (state) => {
+    sendChatMessageStart: (state, action) => {
       state.status = 'loading';
+      state.chat.push(action.payload); // Add message with null response
     },
-    sendChatMessageSuccess: (state, action) => {
-      state.status = 'succeeded';
-      state.chat.push(action.payload);
+    updateChatMessage: (state, action) => {
+      const message = state.chat.find(msg => msg.id === action.payload.id);
+      if (message) {
+        message.response = action.payload.response;
+      }
+      state.status = 'idle';
     },
     sendChatMessageFailed: (state, action) => {
       state.status = 'failed';
       state.error = action.payload;
     },
-    clearChat: (state) => {
-      state.chat = [];
-    },
   },
 });
 
-export const { sendChatMessageStart, sendChatMessageSuccess, sendChatMessageFailed, clearChat } = chatSlice.actions;
-
+export const { sendChatMessageStart, updateChatMessage, sendChatMessageFailed } = chatSlice.actions;
 export default chatSlice.reducer;

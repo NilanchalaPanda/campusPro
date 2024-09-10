@@ -1,10 +1,10 @@
 'use client'
 
-import { MicIcon, School2Icon, SendHorizontalIcon, LoaderIcon, AlertCircleIcon, StopCircleIcon } from 'lucide-react'
-import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import MicRecorder from 'mic-recorder-to-mp3'
-import { sendChatMessage } from '@/redux/actions/sendMessage'
+import { MicIcon, School2Icon, SendHorizontalIcon, LoaderIcon, AlertCircleIcon, StopCircleIcon } from 'lucide-react';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import MicRecorder from 'mic-recorder-to-mp3';
+import { sendChatMessage } from '@/redux/actions/sendMessage';
 
 export default function ChatSectionComponent() {
   const dispatch = useDispatch();
@@ -16,7 +16,6 @@ export default function ChatSectionComponent() {
   const [recorder] = useState(new MicRecorder({ bitRate: 128 }));
   const [error, setError] = useState('');
 
-  // Request microphone access
   useState(() => {
     navigator.mediaDevices.getUserMedia({ audio: true })
       .then(() => {
@@ -51,10 +50,7 @@ export default function ChatSectionComponent() {
   const stopRecording = () => {
     recorder.stop().getMp3().then(([buffer, blob]) => {
       const audioBlob = new Blob(buffer, { type: 'audio/mp3' });
-
-      // Send the MP3 file to the API
       sendToApi(audioBlob);
-
       setIsRecording(false);
     }).catch((e) => {
       console.log(e);
@@ -79,7 +75,6 @@ export default function ChatSectionComponent() {
       }
 
       const data = await response.json();
-       console.log(data.text)
       dispatch(sendChatMessage({ message: data.text }));
       setError('');
     } catch (err) {
@@ -101,26 +96,25 @@ export default function ChatSectionComponent() {
           <div className='space-y-4'>
             {chatState.chat.map((message, index) => (
               <div key={index}>
-                {/* User Message */}
                 <div className='flex justify-end'>
                   <div className='max-w-xs p-3 rounded-lg shadow-md bg-blue-500 text-white'>
                     {message.input}
                   </div>
                 </div>
-                {/* Chatbot Response */}
                 <div className='flex justify-start mt-2'>
-                  <div className='max-w-xs p-3 rounded-lg shadow-md bg-gray-300 text-gray-900'>
-                    {message.response}
-                  </div>
+                  {message.response ? (
+                    <div className='max-w-xs p-3 rounded-lg shadow-md bg-gray-300 text-gray-900'>
+                      {message.response}
+                    </div>
+                  ) : (
+                    <div className='flex items-center space-x-2'>
+                      <LoaderIcon className='animate-spin text-blue-500' size={24} />
+                      <span className='text-blue-500'>Loading...</span>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
-            {chatState.status === 'loading' && (
-              <div className='flex justify-center mt-4'>
-                <LoaderIcon className='animate-spin text-blue-500' size={24} />
-                <span className='ml-2 text-blue-500'>Loading...</span>
-              </div>
-            )}
             {chatState.status === 'failed' && (
               <div className='flex justify-center mt-4'>
                 <AlertCircleIcon className='text-red-500' size={24} />
@@ -159,5 +153,5 @@ export default function ChatSectionComponent() {
         </button>
       </div>
     </div>
-  )
+  );
 }
