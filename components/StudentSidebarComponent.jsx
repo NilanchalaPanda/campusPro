@@ -12,7 +12,7 @@ const handleLogout = async () => {
   signOut({ callbackUrl: '/' })
 }
 
-const StudentSidebarComponent = () => {
+const   StudentSidebarComponent = () => {
   const path = usePathname()
   // console.log(path)
   return (
