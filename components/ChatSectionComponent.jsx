@@ -32,7 +32,8 @@ export default function ChatSectionComponent() {
   const [isBlocked, setIsBlocked] = useState(false)
   const [recorder] = useState(new MicRecorder({ bitRate: 128 }))
   const [error, setError] = useState('')
-  const [isFAQOpen, setIsFAQOpen] = useState(false) // State to manage FAQ dropdown visibility
+  const [isFAQOpen, setIsFAQOpen] = useState(false)
+  const [loadingIndex, setLoadingIndex] = useState(null) // Track which response is loading
 
   // Request microphone access
   useState(() => {
@@ -48,8 +49,10 @@ export default function ChatSectionComponent() {
 
   const handleSendMessage = () => {
     if (inputText.trim()) {
-      dispatch(sendChatMessage({ message: inputText }))
-      setInputText('') // Clear the input after sending
+      const index = chatState.chat.length;
+      setLoadingIndex(index); // Set loading index for the new message
+      dispatch(sendChatMessage({ message: inputText }));
+      setInputText(''); // Clear input after sending
     }
   }
 
@@ -101,7 +104,6 @@ export default function ChatSectionComponent() {
       if (!response.ok) {
         const errorData = await response.json()
         setError(`Error: ${errorData.message}`)
-
         return
       }
 
@@ -114,7 +116,9 @@ export default function ChatSectionComponent() {
   }
 
   const handleFAQClick = (faq) => {
-    dispatch(sendChatMessage({ message: faq }))
+    const index = chatState.chat.length;
+    setLoadingIndex(index); // Set loading index for the FAQ message
+    dispatch(sendChatMessage({ message: faq }));
   }
 
   const toggleFAQDropdown = () => {
@@ -143,18 +147,19 @@ export default function ChatSectionComponent() {
                 </div>
                 {/* Chatbot Response */}
                 <div className='mt-2 flex justify-start'>
-                  <div className='max-w-xs rounded-lg bg-gray-300 p-3 text-gray-900 shadow-md'>
-                    {message.response}
+                  <div className='relative max-w-xs rounded-lg bg-gray-300 p-3 text-gray-900 shadow-md'>
+                    {loadingIndex === index && chatState.status === 'loading' ? (
+                      <div className='flex items-center'>
+                        <LoaderIcon className='animate-spin text-blue-500' size={24} />
+                        <span className='ml-2 text-blue-500'>Loading...</span>
+                      </div>
+                    ) : (
+                      message.response
+                    )}
                   </div>
                 </div>
               </div>
             ))}
-            {chatState.status === 'loading' && (
-              <div className='mt-4 flex justify-center'>
-                <LoaderIcon className='animate-spin text-blue-500' size={24} />
-                <span className='ml-2 text-blue-500'>Loading...</span>
-              </div>
-            )}
             {chatState.status === 'failed' && (
               <div className='mt-4 flex justify-center'>
                 <AlertCircleIcon className='text-red-500' size={24} />
