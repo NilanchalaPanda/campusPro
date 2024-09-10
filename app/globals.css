@@ -15,34 +15,6 @@
   }
 }
 
-/* width */
-/* ::-webkit-scrollbar {
-  width: 6px;
-} */
-
-/* Track */
-/* ::-webkit-scrollbar-track {
-  background: #ffffff;
-} */
-
-/* Handle */
-/* ::-webkit-scrollbar-thumb {
-  background: #8F00FF;
-} */
-
-/* Handle on hover */
-/* ::-webkit-scrollbar-thumb:hover {
-  background: #8F00FF;
-} */
-
-::-webkit-scrollbar {
-  display: none;
-}
-
-/* disable scroll bar */
-::-webkit-scrollbar-track {
-}
-
-#chat-section::-webkit-scrollbar {
+*::-webkit-scrollbar {
   display: none;
 }

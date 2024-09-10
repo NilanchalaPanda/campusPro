@@ -12,7 +12,11 @@ const ChatSchema = new mongoose.Schema({
   isValid: {
     type: String,
     default: true,
-  }
+  },
+  voting: {
+    type: String,
+    enum: ['upVote', 'downVote'],
+  },
 })
 
 const Chat = mongoose.models.Chat || mongoose.model('Chat', ChatSchema)
