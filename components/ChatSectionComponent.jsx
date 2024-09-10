@@ -1,10 +1,18 @@
 'use client'
 
-import { MicIcon, School2Icon, SendHorizontalIcon, LoaderIcon, AlertCircleIcon, StopCircleIcon } from 'lucide-react'
+import { MicIcon, School2Icon, SendHorizontalIcon, LoaderIcon, AlertCircleIcon, StopCircleIcon, ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import MicRecorder from 'mic-recorder-to-mp3'
 import { sendChatMessage } from '@/redux/actions/sendMessage'
+
+const faqs = [
+  "How do I apply for college?",
+  "What are the eligibility criteria?",
+  "How do I get a scholarship?",
+  "What is the admission deadline?",
+  "Can I apply for multiple colleges?"
+];
 
 export default function ChatSectionComponent() {
   const dispatch = useDispatch();
@@ -15,6 +23,7 @@ export default function ChatSectionComponent() {
   const [isBlocked, setIsBlocked] = useState(false);
   const [recorder] = useState(new MicRecorder({ bitRate: 128 }));
   const [error, setError] = useState('');
+  const [isFAQOpen, setIsFAQOpen] = useState(false); // State to manage FAQ dropdown visibility
 
   // Request microphone access
   useState(() => {
@@ -29,7 +38,6 @@ export default function ChatSectionComponent() {
 
   const handleSendMessage = () => {
     if (inputText.trim()) {
-      // Immediately update chat with user query (empty response at first)
       dispatch(sendChatMessage({ message: inputText }));
       setInputText(''); // Clear the input after sending
     }
@@ -80,7 +88,6 @@ export default function ChatSectionComponent() {
       }
 
       const data = await response.json();
-      console.log(data.text)
       dispatch(sendChatMessage({ message: data.text }));
       setError('');
     } catch (err) {
@@ -88,12 +95,12 @@ export default function ChatSectionComponent() {
     }
   };
 
-  // New: Handle sending message on Enter key press
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();  // Prevent newline on enter
-      handleSendMessage();  // Send the message
-    }
+  const handleFAQClick = (faq) => {
+    dispatch(sendChatMessage({ message: faq }));
+  };
+
+  const toggleFAQDropdown = () => {
+    setIsFAQOpen(!isFAQOpen);
   };
 
   return (
@@ -117,13 +124,11 @@ export default function ChatSectionComponent() {
                   </div>
                 </div>
                 {/* Chatbot Response */}
-                {message.response && (
-                  <div className='flex justify-start mt-2'>
-                    <div className='max-w-xs p-3 rounded-lg shadow-md bg-gray-300 text-gray-900'>
-                      {message.response}
-                    </div>
+                <div className='flex justify-start mt-2'>
+                  <div className='max-w-xs p-3 rounded-lg shadow-md bg-gray-300 text-gray-900'>
+                    {message.response}
                   </div>
-                )}
+                </div>
               </div>
             ))}
             {chatState.status === 'loading' && (
@@ -142,13 +147,40 @@ export default function ChatSectionComponent() {
           </div>
         )}
       </div>
-
+      <div className='mt-6 p-4 bg-white border w-[100%] border-gray-300 rounded-lg shadow-md'>
+        <button
+          onClick={toggleFAQDropdown}
+          className='flex items-center justify-between w-full p-4 text-lg font-semibold text-gray-700 bg-gray-200 rounded-lg shadow-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500'
+        >
+          Frequently Asked Questions
+          {isFAQOpen ? (
+            <ChevronUpIcon size={24} className='text-gray-500' />
+          ) : (
+            <ChevronDownIcon size={24} className='text-gray-500' />
+          )}
+        </button>
+        {isFAQOpen && (
+          <div className='mt-4 p-4 bg-white border border-gray-300  rounded-lg shadow-md'>
+            <div className='space-y-2'>
+              {faqs.map((faq, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleFAQClick(faq)}
+                  className='w-full text-left bg-blue-100 text-blue-900 p-4 rounded-lg shadow-md hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500'
+                >
+                  {faq}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
       <div className='mt-4 flex items-center space-x-2 bg-white border border-gray-300 rounded-full shadow-md p-2'>
         <input
           type='text'
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
-          onKeyDown={handleKeyDown}  // Capture Enter key press
+          onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
           className='flex-grow border-none bg-gray-100 px-4 py-2 text-gray-900 placeholder-gray-500 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500'
           placeholder='Type a message...'
         />
