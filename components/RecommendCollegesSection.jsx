@@ -1,6 +1,6 @@
 import React from 'react'
 
-function CollegesSection() {
+function RecommendCollegesSection() {
   return (
     <div className='my-10 flex w-full flex-col items-center justify-center bg-violet-400 px-2 py-5 text-center text-slate-100'>
       This strip will display different colleges that are assoicated with us
@@ -8,4 +8,4 @@ function CollegesSection() {
   )
 }
 
-export default CollegesSection
+export default RecommendCollegesSection
