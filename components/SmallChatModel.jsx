@@ -47,7 +47,7 @@ function SmallChatModel() {
           onClick={UserProfModule}
           className={`flex items-center justify-center gap-4 rounded-md py-2 hover:scale-95 hover:rounded-xl hover:bg-white md:px-2 lg:justify-start ${currentTab === 'profile' ? 'text-purple-500' : ''}`}
         >
-          <UserRoundPen strokeWidth={2} />
+          <UserRoundPen strokeWidth={3} />
         </button>
       </div>
     </div>
