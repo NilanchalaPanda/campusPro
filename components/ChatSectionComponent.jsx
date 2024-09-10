@@ -9,19 +9,51 @@ import {
   StopCircleIcon,
   ChevronDownIcon,
   ChevronUpIcon,
+  ThumbsUp,
+  ThumbsDown,
+  Smile,
 } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import MicRecorder from 'mic-recorder-to-mp3'
 import { sendChatMessage } from '@/redux/actions/sendMessage'
 import { BeatLoader } from 'react-spinners'
+import {
+  sendChatMessageStart,
+  updateChatMessage,
+} from '@/redux/slices/chatSlice'
 
 const faqs = [
-  'How do I apply for college?',
-  'What are the eligibility criteria?',
-  'How do I get a scholarship?',
-  'What is the admission deadline?',
-  'Can I apply for multiple colleges?',
+  {
+    id: 1,
+    question: 'How do I apply for college?',
+    answer:
+      'I can help you with your application for college in Rajasthan. First, you should research universities and colleges in Rajasthan offering the course you want to study. You can then apply directly to the college or university of your choice. You can also apply for a scholarship from the Government of Rajasthan, Social Justice, and Empowerment Department.',
+  },
+  {
+    id: 2,
+    question: 'What are the eligibility criteria?',
+    answer:
+      'The eligibility criteria for engineering colleges in Rajasthan are based on the marks obtained in a state or national-level entrance exam, followed by a counselling session held online. The Rajasthan Engineering Admission Process (REAP) follows a comprehensive criteria to evaluate candidates for admission to engineering programmes in the state.',
+  },
+  {
+    id: 3,
+    question: 'How do I get a scholarship?',
+    answer:
+      'To get a scholarship in Rajasthan, you must have a domicile of Rajasthan. The Rajasthan Scholarship application form is available online. You can apply for the scholarship when college admission starts.',
+  },
+  {
+    id: 4,
+    question: 'What is the admission deadline?',
+    answer:
+      'The admission deadline for colleges in Rajasthan varies from college to college. You should check the official website of the college you are interested in to know the admission deadline. Some colleges may have an early admission deadline, while others may have a later deadline. It is important to apply before the deadline to secure your seat in the college.',
+  },
+  {
+    id: 5,
+    question: 'Can I apply for multiple colleges?',
+    answer:
+      'Yes, you can apply for multiple colleges in Rajasthan. However, you should check the admission guidelines of each college to know the application process and eligibility criteria. Some colleges may require you to submit separate applications for each course, while others may allow you to apply for multiple courses through a single application form.',
+  },
 ]
 
 export default function ChatSectionComponent() {
@@ -35,6 +67,26 @@ export default function ChatSectionComponent() {
   const [error, setError] = useState('')
   const [isFAQOpen, setIsFAQOpen] = useState(false)
   const [loadingIndex, setLoadingIndex] = useState(null) // Track which response is loading
+
+  const [liked, setLiked] = useState(false)
+  const [disliked, setDisliked] = useState(false)
+
+  const [questionsAsked, setQuestionsAsked] = useState(0)
+  const [feedback, setFeedback] = useState(0)
+
+  useEffect(() => {
+    const element = document.getElementById('chat-section')
+    // //scroll to bottom
+    // element.scrollTop = element.scrollHeight
+    // smooth scroll
+    element.scrollTo({ top: element.scrollHeight, behavior: 'smooth' })
+  }, [
+    chatState.chat,
+    chatState.status,
+    chatState.error,
+    isFAQOpen,
+    questionsAsked,
+  ])
 
   // Request microphone access
   useState(() => {
@@ -93,6 +145,7 @@ export default function ChatSectionComponent() {
   }
 
   const sendToApi = async (blob) => {
+    setQuestionsAsked((prev) => prev + 1)
     const formData = new FormData()
     formData.append('file', blob, 'recording.mp3')
 
@@ -117,18 +170,35 @@ export default function ChatSectionComponent() {
   }
 
   const handleFAQClick = (faq) => {
+    setQuestionsAsked((prev) => prev + 1)
+    const chatId = new Date().getTime()
     const index = chatState.chat.length
     setLoadingIndex(index) // Set loading index for the FAQ message
-    dispatch(sendChatMessage({ message: faq }))
+    dispatch(
+      sendChatMessageStart({ id: chatId, input: faq.question, response: null }),
+    )
+    setTimeout(() => {
+      dispatch(
+        updateChatMessage({
+          id: chatId,
+          response: faq.answer,
+        }),
+      )
+    }, 1000)
   }
 
   const toggleFAQDropdown = () => {
     setIsFAQOpen(!isFAQOpen)
   }
 
+  console.log('len', questionsAsked)
+
   return (
     <div className='flex h-full flex-col rounded-l-2xl bg-white p-4'>
-      <div className='flex-grow overflow-y-auto py-4'>
+      <div
+        id='chat-section'
+        className='flex-grow overflow-y-auto rounded-xl py-4 shadow-md transition-all duration-300 ease-in-out'
+      >
         {chatState.chat.length === 0 && chatState.status !== 'loading' ? (
           <div className='flex h-full flex-col items-center justify-center rounded-xl bg-gray-200 p-8 text-center shadow-md'>
             <School2Icon size={48} className='text-gray-600' />
@@ -159,6 +229,32 @@ export default function ChatSectionComponent() {
                     )}
                   </div>
                 </div>
+                {chatState.status !== 'loading' && (
+                  <div className='items-centers mt-2 flex justify-start gap-3'>
+                    <ThumbsUp
+                      onClick={() => {
+                        setLiked(index)
+                        setDisliked(false)
+                      }}
+                      className='transform cursor-pointer transition-all duration-300 ease-in-out hover:scale-110'
+                      height={20}
+                      width={20}
+                      stroke='rgb(168 85 247)'
+                      fill={liked === index ? 'rgb(168 85 247)' : 'none'}
+                    />
+                    <ThumbsDown
+                      onClick={() => {
+                        setDisliked(index)
+                        setLiked(false)
+                      }}
+                      className='mt-1 transform cursor-pointer transition-all duration-300 ease-in-out hover:scale-110'
+                      height={20}
+                      width={20}
+                      stroke='rgb(168 85 247)'
+                      fill={disliked === index ? 'rgb(168 85 247)' : 'none'}
+                    />
+                  </div>
+                )}
               </div>
             ))}
             {chatState.status === 'failed' && (
@@ -170,6 +266,27 @@ export default function ChatSectionComponent() {
             {error && <p style={{ color: 'red' }}>{error}</p>}
           </div>
         )}
+
+        {questionsAsked % 5 == 0 &&
+          questionsAsked !== 0 &&
+          chatState.status !== 'loading' && (
+            <div className='mt-2 flex justify-center text-center'>
+              <div className='relative max-w-xs rounded-lg bg-gray-100 p-3 text-gray-900 shadow-md'>
+                Please rate your experience with the chatbot.
+                <div className='mt-2 flex justify-center gap-2'>
+                  {Array.from({ length: 5 }, (_, i) => (
+                    <Smile
+                      className='cursor-pointer text-white transition-all duration-300 ease-in-out hover:scale-110'
+                      key={i}
+                      onClick={() => setFeedback(i + 1)}
+                      stroke={feedback >= i + 1 ? '#A2539E' : '#D3D3D3'}
+                      //fill={feedback >= i + 1 ? 'rgb(168 85 247)' : 'none'}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
       </div>
       <div className='bg-white pt-4'>
         <button
@@ -186,16 +303,16 @@ export default function ChatSectionComponent() {
         {isFAQOpen && (
           <div className='mt-4 overflow-y-auto rounded-lg border border-gray-300 bg-white p-4 shadow-md'>
             <div className='space-y-2'>
-              {faqs.map((faq, index) => (
+              {faqs.map(({ question, ...others }, index) => (
                 <button
                   key={index}
                   onClick={() => {
-                    handleFAQClick(faq)
+                    handleFAQClick({ question, ...others })
                     setIsFAQOpen(false)
                   }}
                   className='w-full rounded-lg bg-purple-100 px-4 py-2 text-left text-purple-900 shadow-md'
                 >
-                  {faq}
+                  {question}
                 </button>
               ))}
             </div>
