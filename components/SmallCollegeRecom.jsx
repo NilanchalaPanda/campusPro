@@ -23,7 +23,7 @@ function SmallCollegeRecom() {
             <p className='px-4 text-xl font-medium'>
               Oops! You have not yet added your{' '}
               <span className='font-bold text-purple-600'>
-                Personal Details
+                COLLEGE PREFERRENCES
               </span>
             </p>
           </>

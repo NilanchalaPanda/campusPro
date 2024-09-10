@@ -31,12 +31,12 @@ export default function Home() {
       )}
 
       {isModalOpen && (
-        <div className='fixed bottom-3 right-3 flex h-[90vh] items-center justify-center rounded-2xl md:bottom-10 md:right-10 md:h-[70vh] md:w-[30%]'>
+        <div className='fixed bottom-3 right-5 flex h-[90vh] items-center justify-center rounded-2xl md:bottom-10 md:right-10 md:h-[70vh] md:w-[30%]'>
           <button
             onClick={toggleModal}
-            className='absolute right-2 top-3 hover:scale-110 hover:rounded-sm hover:bg-white'
+            className='absolute right-2 top-3 hover:scale-110'
           >
-            <X />
+            <X strokeWidth={3} />
           </button>
           <SmallChatModel />
         </div>
