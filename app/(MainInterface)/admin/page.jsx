@@ -199,7 +199,6 @@ const data5 = [
 
 const AdminPage = () => {
   const [userCount, setUserCount] = useState(500)
-  const [queryCount, setQueryCount] = useState(502636)
 
   useEffect(() => {
     const fetchUsercount = async () => {
