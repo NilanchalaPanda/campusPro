@@ -3,9 +3,17 @@
 import {
   ChatSectionComponent,
   SmallCollegeRecom,
+  SmallRetriveChat,
   SmallUserProfile,
 } from '@/components'
-import { MessageSquareText, School, UserRoundPen } from 'lucide-react'
+import {
+  CircleArrowOutUpRight,
+  MessageSquareText,
+  School,
+  SquareMousePointer,
+  UserRoundPen,
+} from 'lucide-react'
+import Link from 'next/link'
 import { useState } from 'react'
 
 function SmallChatModel() {
@@ -23,35 +31,59 @@ function SmallChatModel() {
     setCurrentTab('profile')
   }
 
+  function RetriveChats() {
+    setCurrentTab('retrive')
+  }
+
+  const tabLinks = {
+    chat: '/chat',
+    college: '/colleges',
+    profile: '/profile',
+    retrive: '/retrieve-chats',
+  }
+
   return (
     <div className='flex h-[90vh] w-[93vw] rounded-2xl md:h-[70vh] md:w-[100%]'>
       <div className='w-[87%] md:w-[90%]'>
         {currentTab === 'chat' && <ChatSectionComponent />}
         {currentTab === 'college' && <SmallCollegeRecom />}
         {currentTab === 'profile' && <SmallUserProfile />}
+        {currentTab === 'retrive' && <SmallRetriveChat />}
       </div>
       <div className='flex w-[13%] flex-col items-center space-y-3 rounded-r-2xl bg-gray-100 px-2 pt-12 md:w-[10%]'>
         <button
           onClick={ChatModule}
-          data-tip='Chat'
-          className={`tooltip tooltip-left flex items-center justify-center gap-4 rounded-md py-2 hover:scale-95 hover:rounded-xl hover:bg-white md:px-2 lg:justify-start ${currentTab === 'chat' ? 'text-purple-500' : ''}`}
+          className={`flex items-center justify-center gap-4 rounded-md py-2 hover:scale-95 hover:rounded-xl hover:bg-white md:px-2 lg:justify-start ${currentTab === 'chat' ? 'text-purple-500' : ''}`}
         >
           <MessageSquareText strokeWidth={3} />
         </button>
         <button
           onClick={CollegeRecModule}
-          data-tip='College Recommendations'
-          className={`tooltip tooltip-left flex items-center justify-center gap-4 rounded-md py-2 hover:scale-95 hover:rounded-xl hover:bg-white md:px-2 lg:justify-start ${currentTab === 'college' ? 'text-purple-500' : ''}`}
+          className={`flex items-center justify-center gap-4 rounded-md py-2 hover:scale-95 hover:rounded-xl hover:bg-white md:px-2 lg:justify-start ${currentTab === 'college' ? 'text-purple-500' : ''}`}
         >
           <School strokeWidth={2} />
         </button>
         <button
           onClick={UserProfModule}
-          data-tip='Profile'
-          className={`tooltip tooltip-left flex items-center justify-center gap-4 rounded-md py-2 hover:scale-95 hover:rounded-xl hover:bg-white md:px-2 lg:justify-start ${currentTab === 'profile' ? 'text-purple-500' : ''}`}
+          className={`flex items-center justify-center gap-4 rounded-md py-2 hover:scale-95 hover:rounded-xl hover:bg-white md:px-2 lg:justify-start ${currentTab === 'profile' ? 'text-purple-500' : ''}`}
         >
           <UserRoundPen strokeWidth={3} />
         </button>
+        <button
+          onClick={RetriveChats}
+          className={`flex items-center justify-center gap-4 rounded-md py-2 hover:scale-95 hover:rounded-xl hover:bg-white md:px-2 lg:justify-start ${currentTab === 'retrive' ? 'text-purple-500' : ''}`}
+        >
+          <SquareMousePointer strokeWidth={3} />
+        </button>
+
+        <Link
+          href={tabLinks[currentTab]}
+          target='_blank'
+          rel='noopener noreferrer'
+          className='fixed bottom-16 right-[50px]'
+        >
+          <CircleArrowOutUpRight strokeWidth={3} />
+        </Link>
       </div>
     </div>
   )
