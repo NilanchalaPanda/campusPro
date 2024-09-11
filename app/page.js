@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 'use client'
 
 import { useState } from 'react'
@@ -15,52 +16,77 @@ export default function Home() {
   return (
     <div className='relative flex flex-col items-center justify-center bg-[#ffffff] px-4'>
       <div className='container mx-auto flex items-center p-4 pl-6'>
-            <Image src='/Stateemblem.png' width={35} height={35} alt='Symbol' />
-            <div className='pl-4 text-xl font-bold text-black md:text-2xl'>
-              Govt. of Rajasthan
-            </div>
-          </div>
+        <Image src='/Stateemblem.png' width={35} height={35} alt='Symbol' />
+        <div className='pl-4 text-xl font-bold text-black md:text-2xl'>
+          Govt. of Rajasthan
+        </div>
+      </div>
       <header className='w-full bg-[#1359a1] shadow'>
         <div className='container mx-auto flex items-center justify-between p-4'>
-         
-          <nav className='space-x-12 text-sm md:text-base '>
-            <a href='#' className='text-white hover:text-gray-300'>About Us</a>
-            <a href='#' className='text-white hover:text-gray-300'>Admissions</a>
-            <a href='#' className='text-white hover:text-gray-300'>Students Corner</a>
-            <a href='#' className='text-white hover:text-gray-300'>Employee Corner</a>
-            <a href='#' className='text-white hover:text-gray-300'>Documents</a>
-            <a href='#' className='text-white hover:text-gray-300'>RTI</a>
-            <a href='#' className='text-white hover:text-gray-300'>Tenders & Auctions</a>
-            <a href='#' className='text-white hover:text-gray-300'>Roster</a>
-            <a href='#' className='text-white hover:text-gray-300'>Colleges</a>
-            <a href='#' className='text-white hover:text-gray-300'>NOC</a>
-            <a href='#' className='text-white hover:text-gray-300'>Other Links</a>
+          <nav className='space-x-12 text-sm md:text-base'>
+            <a href='#' className='text-white hover:text-gray-300'>
+              About Us
+            </a>
+            <a href='#' className='text-white hover:text-gray-300'>
+              Admissions
+            </a>
+            <a href='#' className='text-white hover:text-gray-300'>
+              Students Corner
+            </a>
+            <a href='#' className='text-white hover:text-gray-300'>
+              Employee Corner
+            </a>
+            <a href='#' className='text-white hover:text-gray-300'>
+              Documents
+            </a>
+            <a href='#' className='text-white hover:text-gray-300'>
+              RTI
+            </a>
+            <a href='#' className='text-white hover:text-gray-300'>
+              Tenders & Auctions
+            </a>
+            <a href='#' className='text-white hover:text-gray-300'>
+              Roster
+            </a>
+            <a href='#' className='text-white hover:text-gray-300'>
+              Colleges
+            </a>
+            <a href='#' className='text-white hover:text-gray-300'>
+              NOC
+            </a>
+            <a href='#' className='text-white hover:text-gray-300'>
+              Other Links
+            </a>
           </nav>
         </div>
       </header>
 
       <main className='flex-1 p-4 md:p-8'>
-        <div className='flex  gap-2 justify-'>
-          <div className='flex flex-col items-center w-full max-w-xs md:max-w-sm'>
-            <img
+        <div className='justify- flex gap-2'>
+          <div className='flex w-full max-w-xs flex-col items-center md:max-w-sm'>
+            <Image
+              width={32}
+              height={32}
               src='/image1.png'
               alt='Officer'
-              className='h-32 w-32 rounded-md border-2 border-black md:h-48 md:w-48'
+              className='rounded-md border-2 border-black md:h-48 md:w-48'
             />
-            <p className='mt-2 text-xs font-bold text-center md:text-sm'>
+            <p className='mt-2 text-center text-xs font-bold md:text-sm'>
               Hon'ble Chief Minister
               <br />
               Shri Bhajan Lal Sharma
             </p>
           </div>
 
-          <div className='flex flex-col items-center w-full max-w-xs md:max-w-sm'>
-            <img
+          <div className='flex w-full max-w-xs flex-col items-center md:max-w-sm'>
+            <Image
+              width={32}
+              height={32}
               src='/image2.jpeg'
               alt='Officer'
-              className='h-32 w-32 rounded-md border-2 border-black md:h-48 md:w-48'
+              className='rounded-md border-2 border-black md:h-48 md:w-48'
             />
-            <p className='mt-2 text-xs font-bold text-center md:text-sm'>
+            <p className='mt-2 text-center text-xs font-bold md:text-sm'>
               Hon'ble Dy. Chief Minister
               <br />
               & Minister of Technical Education
@@ -69,26 +95,30 @@ export default function Home() {
             </p>
           </div>
 
-          <div className='flex flex-col items-center w-full max-w-xs md:max-w-sm'>
-            <img
+          <div className='flex w-full max-w-xs flex-col items-center md:max-w-sm'>
+            <Image
+              width={32}
+              height={32}
               src='/image3.jpeg'
               alt='Officer'
-              className='h-32 w-32 rounded-md border-2 border-black md:h-48 md:w-48'
+              className='rounded-md border-2 border-black md:h-48 md:w-48'
             />
-            <p className='mt-2 text-xs font-bold text-center md:text-sm'>
+            <p className='mt-2 text-center text-xs font-bold md:text-sm'>
               Secretary, Higher & Tech. Education Dept.
               <br />
               Dr. Arushi Ajey Malik (IAS)
             </p>
           </div>
 
-          <div className='flex flex-col items-center w-full max-w-xs md:max-w-sm'>
-            <img
+          <div className='flex w-full max-w-xs flex-col items-center md:max-w-sm'>
+            <Image
+              width={32}
+              height={32}
               src='/image4.jpg'
               alt='Officer'
-              className='h-32 w-32 rounded-md md:h-48 md:w-48'
+              className='rounded-md border-2 border-black md:h-48 md:w-48'
             />
-            <p className='mt-2 text-xs font-bold text-center md:text-sm'>
+            <p className='mt-2 text-center text-xs font-bold md:text-sm'>
               Director, Technical Education (Polytechnic)
               <br />
               Shri Anshu Kumar Sahgal
@@ -100,10 +130,18 @@ export default function Home() {
           <h2 className='mb-4 text-xl font-bold md:text-2xl'>Latest News</h2>
           <div className='relative overflow-hidden text-[#007bff]'>
             <div className='news-rotate space-y-2 text-left'>
-              <p className='text-base md:text-lg'>New policy announced by the Govt.</p>
-              <p className='text-base md:text-lg'>Infrastructure development project approved.</p>
-              <p className='text-base md:text-lg'>New education scheme launched.</p>
-              <p className='text-base md:text-lg'>Health initiative for rural areas started.</p>
+              <p className='text-base md:text-lg'>
+                New policy announced by the Govt.
+              </p>
+              <p className='text-base md:text-lg'>
+                Infrastructure development project approved.
+              </p>
+              <p className='text-base md:text-lg'>
+                New education scheme launched.
+              </p>
+              <p className='text-base md:text-lg'>
+                Health initiative for rural areas started.
+              </p>
             </div>
           </div>
         </div>
@@ -131,19 +169,19 @@ export default function Home() {
           </div>
 
           <div>
-            <h3 className='mb-2 text-lg font-bold'>Website Design & Updated by:</h3>
+            <h3 className='mb-2 text-lg font-bold'>
+              Website Design & Updated by:
+            </h3>
             <div className='text-sm'>
               <p>Directorate of Technical Education, Jodhpur</p>
-              <p>Copyright ©2019 Directorate Of Technical Education, Rajasthan</p>
+              <p>
+                Copyright ©2019 Directorate Of Technical Education, Rajasthan
+              </p>
               <p>Last Updated: 9/11/2024, 10:28:47 AM</p>
             </div>
           </div>
         </div>
       </footer>
-
-      <div className='flex h-screen w-full items-center justify-center bg-orange-200 text-center text-4xl font-bold'>
-        FEATURES SECTION WILL COME HERE
-      </div>
 
       {!isModalOpen && (
         <button
