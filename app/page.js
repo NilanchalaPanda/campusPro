@@ -18,7 +18,8 @@ export default function Home() {
       <div className='container mx-auto flex items-center p-4 pl-6'>
         <Image src='/Stateemblem.png' width={35} height={35} alt='Symbol' />
         <div className='pl-4 text-xl font-bold text-black md:text-2xl'>
-          Govt. of Rajasthan
+          Government of Rajasthan <br />
+          Department of Technical Education
         </div>
       </div>
       <header className='w-full bg-[#1359a1] shadow'>
