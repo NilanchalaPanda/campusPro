@@ -13,7 +13,7 @@ function SmallCollegeRecom() {
         COLLEGE RECOMMENDATIONS
       </h1>
 
-      {!collegeList.length > 0 ? (
+      {collegeList.length > 0 ? (
         <div className='mt-2 flex h-[85%] flex-col items-center justify-start space-y-2 overflow-y-auto rounded-xl px-2 md:px-0'>
           {/* ACTUAL CODE TO BE USED */}
           {/* {collegeList.map((item) => (
