@@ -1,48 +1,51 @@
 import { NextResponse } from 'next/server'
-import mongoose from 'mongoose'
-import { getServerSession } from 'next-auth/next' // If using next-auth for session management
 import Chat from '@/models/chatModel'
 import User from '@/models/userModel'
 import { connectToDb } from '@/db/connect'
 
-// POST API route
+/*
+This api will be used in ChatSectionComponent, BUT ONE THING TO REMEMBERS. First hit the user route.. get the userID (save it in local storage) and then hit this route and pass that userID saved in localstorage. This will happend only for FIRST TIME... 
+
+const id = localStorage.getItem(userID);
+if(!id){
+  hit the user route.
+  save userID in localStorage.
+}
+
+// THEN..
+const id = localStorage.getItem(userID);
+hit this route and pass the userID saved in localstorage, creating a new chat document. ALSO handle the voting: NULL and isValid: true... fields.
+*/
+
 export async function POST(request) {
   try {
-    await connectToDB()
+    await connectToDb()
 
-    const { userID, input, response } = await request.json()
+    const { userID, input, response, voting, isValid } = await request.json()
 
-    // Validate input
-    if (!userID || !input || !response) {
+    // Validate input fields
+    if (!userID || !input || !response || !voting || !isValid) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 },
       )
     }
 
-    // Fetch the user from the session
-    const session = await getServerSession() // Adapt this to your authentication method
-    if (!session || !session.user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
-
-    // Create new chat document
-    const newChat = new Chat({
-      userID: mongoose.Types.ObjectId(userID),
+    const newChat = Chat.create({
       input,
       response,
+      voting: null,
+      isValid,
     })
 
-    const savedChat = await newChat.save()
-
-    // Update user's chatIDs
+    // Updating the chatIDs array in UserSchema
     await User.findByIdAndUpdate(
-      session.user._id, // Assuming session.user._id contains the logged-in user's ID
+      userID,
       { $push: { chatIDs: savedChat._id } },
       { new: true },
     )
 
-    return NextResponse.json(savedChat, { status: 201 })
+    return NextResponse.json(newChat, { status: 201 })
   } catch (error) {
     console.error('Error saving chat data:', error)
     return NextResponse.json(

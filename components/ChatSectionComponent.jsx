@@ -4,7 +4,6 @@ import {
   MicIcon,
   School2Icon,
   SendHorizontalIcon,
-  LoaderIcon,
   AlertCircleIcon,
   StopCircleIcon,
   ChevronDownIcon,
