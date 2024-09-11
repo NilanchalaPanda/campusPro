@@ -14,11 +14,40 @@ function SmallUserProfile() {
   } = useForm({
     resolver: yupResolver(validationSchema),
   })
-
-  const onSubmit = (data) => {
-    console.log(data)
-    reset()
+  async function onSubmit(data) {
+    console.log(data);
+  
+    // Fetch userID from localStorage
+    const userID = localStorage.getItem('userID');
+  
+    // If no userID is found, handle it (either throw an error or create a new user, depending on your logic)
+    if (!userID) {
+      console.error('No userID found in localStorage.');
+      return;
+    }
+  
+    // Append userID to the data being sent to the backend
+    const updatedData = {
+      ...data,
+      userID, // Add the userID from localStorage
+    };
+  
+    try {
+      const userRes = await fetch('http://localhost:3000/api/user', {
+        method: 'PUT',
+        body: JSON.stringify(updatedData), // Pass the updated data with userID
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      const userData = await userRes.json();
+      console.log(userData);
+    } catch (e) {
+      console.error(e);
+    }
   }
+  
 
   const getErrorMessage = (field) => {
     switch (field) {

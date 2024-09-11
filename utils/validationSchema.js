@@ -18,8 +18,8 @@ export const validationSchema = yup.object().shape({
     .min(0, 'Percentage cannot be less than 0')
     .max(100, 'Percentage cannot exceed 100'),
   preferredStreams: yup
-    .array()
-    .of(yup.string().required('Stream is required'))
+    .string()
+    .required('College type is required')
     .min(1, 'At least one preferred stream is required'),
   examsTaken: yup
     .array()

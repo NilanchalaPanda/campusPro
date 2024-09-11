@@ -22,7 +22,7 @@ export async function POST(request) {
     await connectToDb()
 
     const { userID, input, response, voting, isValid } = await request.json()
-
+    console.log(userID, input, response, voting, isValid )
     // Validate input fields
     if (!userID || !input || !response || !voting || !isValid) {
       return NextResponse.json(
@@ -30,18 +30,19 @@ export async function POST(request) {
         { status: 400 },
       )
     }
+    console.log("first")
 
     const newChat = Chat.create({
       input,
       response,
-      voting: null,
+      voting: 'None',
       isValid,
     })
 
     // Updating the chatIDs array in UserSchema
     await User.findByIdAndUpdate(
       userID,
-      { $push: { chatIDs: savedChat._id } },
+      { $push: { chatIDs: newChat._id } },
       { new: true },
     )
 
