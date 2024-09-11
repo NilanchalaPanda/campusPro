@@ -22,55 +22,67 @@ export default function Home() {
           Department of Technical Education
         </div>
       </div>
-      <header className='w-full bg-[#1359a1] shadow'>
-        <div className='container mx-auto flex items-center justify-between p-4'>
+      <header className='block w-full bg-[#1359a1] shadow'>
+        <div className='container mx-auto hidden items-center justify-between p-4 xl:flex'>
           <nav className='space-x-12 text-sm md:text-base'>
-            <a href='#' className='text-white hover:text-gray-300'>
+            <a href='/' className='text-white hover:text-gray-300'>
               About Us
             </a>
-            <a href='#' className='text-white hover:text-gray-300'>
+            <a href='/' className='text-white hover:text-gray-300'>
               Admissions
             </a>
-            <a href='#' className='text-white hover:text-gray-300'>
+            <a href='/' className='text-white hover:text-gray-300'>
               Students Corner
             </a>
-            <a href='#' className='text-white hover:text-gray-300'>
+            <a href='/' className='text-white hover:text-gray-300'>
               Employee Corner
             </a>
-            <a href='#' className='text-white hover:text-gray-300'>
+            <a href='/' className='text-white hover:text-gray-300'>
               Documents
             </a>
-            <a href='#' className='text-white hover:text-gray-300'>
+            <a href='/' className='text-white hover:text-gray-300'>
               RTI
             </a>
-            <a href='#' className='text-white hover:text-gray-300'>
+            <a href='/' className='text-white hover:text-gray-300'>
               Tenders & Auctions
             </a>
-            <a href='#' className='text-white hover:text-gray-300'>
+            <a href='/' className='text-white hover:text-gray-300'>
               Roster
             </a>
-            <a href='#' className='text-white hover:text-gray-300'>
+            <a href='/' className='text-white hover:text-gray-300'>
               Colleges
             </a>
-            <a href='#' className='text-white hover:text-gray-300'>
+            <a href='/' className='text-white hover:text-gray-300'>
               NOC
             </a>
-            <a href='#' className='text-white hover:text-gray-300'>
+            <a href='/' className='text-white hover:text-gray-300'>
               Other Links
             </a>
           </nav>
         </div>
+
+        <div className='space-x-3 p-4 text-center text-white xl:hidden'>
+          <a href='/' className='text-white hover:text-gray-300'>
+            About Us
+          </a>
+          <a href='/' className='text-white hover:text-gray-300'>
+            Admissions
+          </a>
+          <a href='/' className='text-white hover:text-gray-300'>
+            Colleges
+          </a>
+        </div>
       </header>
 
       <main className='flex-1 p-4 md:p-8'>
-        <div className='justify- flex gap-2'>
+        <div className='flex flex-col gap-2 md:flex-row'>
           <div className='flex w-full max-w-xs flex-col items-center md:max-w-sm'>
             <Image
               width={32}
               height={32}
               src='/image1.png'
               alt='Officer'
-              className='rounded-md border-2 border-black md:h-48 md:w-48'
+              className='h-48 w-48 rounded-md border-2 border-black'
             />
             <p className='mt-2 text-center text-xs font-bold md:text-sm'>
               Hon'ble Chief Minister
@@ -85,7 +97,7 @@ export default function Home() {
               height={32}
               src='/image2.jpeg'
               alt='Officer'
-              className='rounded-md border-2 border-black md:h-48 md:w-48'
+              className='h-48 w-48 rounded-md border-2 border-black'
             />
             <p className='mt-2 text-center text-xs font-bold md:text-sm'>
               Hon'ble Dy. Chief Minister
@@ -102,7 +114,7 @@ export default function Home() {
               height={32}
               src='/image3.jpeg'
               alt='Officer'
-              className='rounded-md border-2 border-black md:h-48 md:w-48'
+              className='h-48 w-48 rounded-md border-2 border-black'
             />
             <p className='mt-2 text-center text-xs font-bold md:text-sm'>
               Secretary, Higher & Tech. Education Dept.
@@ -117,7 +129,7 @@ export default function Home() {
               height={32}
               src='/image4.jpg'
               alt='Officer'
-              className='rounded-md border-2 border-black md:h-48 md:w-48'
+              className='h-48 w-48 rounded-md border-2 border-black'
             />
             <p className='mt-2 text-center text-xs font-bold md:text-sm'>
               Director, Technical Education (Polytechnic)
@@ -194,7 +206,7 @@ export default function Home() {
       )}
 
       {isModalOpen && (
-        <div className='fixed bottom-3 right-3 flex h-[80vh] w-[90%] max-w-md items-center justify-center rounded-2xl md:bottom-10 md:right-10 md:h-[70vh] md:w-[30%]'>
+        <div className='fixed bottom-3 right-3 flex h-[80vh] w-[90%] max-w-md items-center justify-center rounded-2xl shadow-md md:bottom-10 md:right-10 md:h-[70vh] md:w-[30%]'>
           <button
             onClick={toggleModal}
             className='absolute right-2 top-3 hover:scale-110'
