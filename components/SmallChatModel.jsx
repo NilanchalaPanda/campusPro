@@ -13,6 +13,7 @@ import {
   SquareMousePointer,
   UserRoundPen,
 } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 
@@ -75,15 +76,23 @@ function SmallChatModel() {
         >
           <SquareMousePointer strokeWidth={3} />
         </button>
-
         <Link
           href={tabLinks[currentTab]}
           target='_blank'
           rel='noopener noreferrer'
-          className='fixed bottom-16 right-[50px]'
+          className='flex items-center justify-center gap-4 rounded-md p-2 hover:scale-95 hover:rounded-xl hover:bg-white md:px-2 lg:justify-start'
         >
           <CircleArrowOutUpRight strokeWidth={3} />
         </Link>
+        <button>
+          <Image
+            className='hover:scale-105 hover:cursor-pointer'
+            src='/WhatsAppIcon.png'
+            width={45}
+            height={45}
+            alt='WhatsApp Icon'
+          />
+        </button>
       </div>
     </div>
   )

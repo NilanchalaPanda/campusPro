@@ -196,7 +196,7 @@ export default function ChatSectionComponent() {
     <div className='flex h-full flex-col rounded-l-2xl bg-white p-4'>
       <div
         id='chat-section'
-        className='no-scrollbar flex-grow overflow-y-auto rounded-xl py-4 shadow-md transition-all duration-300 ease-in-out'
+        className='no-scrollbar flex-grow overflow-y-auto rounded-xl py-4 transition-all duration-300 ease-in-out'
       >
         {chatState.chat.length === 0 && chatState.status !== 'loading' ? (
           <div className='flex h-full flex-col items-center justify-center rounded-xl bg-gray-200 p-8 text-center shadow-md'>
@@ -217,7 +217,7 @@ export default function ChatSectionComponent() {
                 </div>
                 {/* Chatbot Response */}
                 <div className='mt-2 flex justify-start'>
-                  <div className='relative max-w-xs rounded-lg bg-gray-100 p-3 text-gray-900 shadow-md'>
+                  <div className='relative max-w-xs rounded-lg bg-gray-100 p-3 font-medium text-gray-800 shadow-md md:max-w-xl'>
                     {loadingIndex === index &&
                     chatState.status === 'loading' ? (
                       <div className='flex items-center'>
