@@ -53,25 +53,25 @@ function SmallChatModel() {
       <div className='flex w-[13%] flex-col items-center space-y-3 rounded-r-2xl bg-gray-100 px-2 pt-12 md:w-[10%]'>
         <button
           onClick={ChatModule}
-          className={`flex items-center justify-center gap-4 rounded-md py-2 hover:scale-95 hover:rounded-xl hover:bg-white md:px-2 lg:justify-start ${currentTab === 'chat' ? 'text-purple-500' : ''}`}
+          className={`flex items-center justify-center gap-4 rounded-md p-2 hover:scale-95 hover:rounded-xl hover:bg-white md:px-2 lg:justify-start ${currentTab === 'chat' ? 'text-purple-500' : ''}`}
         >
           <MessageSquareText strokeWidth={3} />
         </button>
         <button
           onClick={CollegeRecModule}
-          className={`flex items-center justify-center gap-4 rounded-md py-2 hover:scale-95 hover:rounded-xl hover:bg-white md:px-2 lg:justify-start ${currentTab === 'college' ? 'text-purple-500' : ''}`}
+          className={`flex items-center justify-center gap-4 rounded-md p-2 hover:scale-95 hover:rounded-xl hover:bg-white md:px-2 lg:justify-start ${currentTab === 'college' ? 'text-purple-500' : ''}`}
         >
           <School strokeWidth={2} />
         </button>
         <button
           onClick={UserProfModule}
-          className={`flex items-center justify-center gap-4 rounded-md py-2 hover:scale-95 hover:rounded-xl hover:bg-white md:px-2 lg:justify-start ${currentTab === 'profile' ? 'text-purple-500' : ''}`}
+          className={`flex items-center justify-center gap-4 rounded-md p-2 hover:scale-95 hover:rounded-xl hover:bg-white md:px-2 lg:justify-start ${currentTab === 'profile' ? 'text-purple-500' : ''}`}
         >
           <UserRoundPen strokeWidth={3} />
         </button>
         <button
           onClick={RetriveChats}
-          className={`flex items-center justify-center gap-4 rounded-md py-2 hover:scale-95 hover:rounded-xl hover:bg-white md:px-2 lg:justify-start ${currentTab === 'retrive' ? 'text-purple-500' : ''}`}
+          className={`flex items-center justify-center gap-4 rounded-md p-2 hover:scale-95 hover:rounded-xl hover:bg-white md:px-2 lg:justify-start ${currentTab === 'retrive' ? 'text-purple-500' : ''}`}
         >
           <SquareMousePointer strokeWidth={3} />
         </button>

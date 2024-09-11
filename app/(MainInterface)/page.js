@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <div className='relative flex flex-col items-center justify-center bg-orange-200 px-4'>
-      <div className='flex h-screen w-full items-center justify-center bg-orange-100 text-center text-4xl font-bold'>
+      <div className='flex h-screen w-full items-center justify-center bg-orange-100 text-center text-3xl font-bold md:text-4xl'>
         HELLO, THIS IS THE <br /> DUMMY WEBSITE OF GOVERNEMNT OF REAJASTHAN
       </div>
 
@@ -31,7 +31,7 @@ export default function Home() {
       )}
 
       {isModalOpen && (
-        <div className='fixed bottom-3 right-5 flex h-[90vh] items-center justify-center rounded-2xl md:bottom-10 md:right-10 md:h-[70vh] md:w-[30%]'>
+        <div className='fixed bottom-3 right-3 flex h-[90vh] items-center justify-center rounded-2xl md:bottom-10 md:right-10 md:h-[70vh] md:w-[30%]'>
           <button
             onClick={toggleModal}
             className='absolute right-2 top-3 hover:scale-110'
