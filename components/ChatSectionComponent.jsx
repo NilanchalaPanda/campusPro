@@ -190,7 +190,6 @@ export default function ChatSectionComponent() {
     setIsFAQOpen(!isFAQOpen)
   }
 
-  console.log('len', questionsAsked)
 
   return (
     <div className='flex h-full flex-col rounded-l-2xl bg-white p-4'>

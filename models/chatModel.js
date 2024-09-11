@@ -15,7 +15,8 @@ const ChatSchema = new mongoose.Schema({
   },
   voting: {
     type: String,
-    enum: ['upVote', 'downVote'],
+    enum: ['upVote', 'downVote', 'None'],
+    default: 'None'
   },
 })
 
