@@ -24,7 +24,7 @@ import {
   Scatter,
 } from "recharts";
 
-const Graphs = ({ data, data01, data3, data4, data5 }) => {
+const Graphs = ({ data}) => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const Graphs = ({ data, data01, data3, data4, data5 }) => {
   }
 
   return (
-    <div className="h-[50%]">
+    <div className="h-[100%]">
       {/* Bar and Pie Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-10 gap-20 h-full">
         {/* Bar Chart */}
