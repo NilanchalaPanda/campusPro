@@ -35,7 +35,7 @@ export default function UserLayout({ children }) {
                 className={`flex items-center gap-x-3 px-4 py-2 pl-5 ${path === '/chat' ? 'bg-gray-700' : ''}`}
               >
                 <MessageSquareText strokeWidth={2} />
-                <span className='hidden lg:block'>Chat</span>
+                <span>Chat</span>
               </Link>
             </li>
             <li className='mb-2'>
@@ -44,7 +44,7 @@ export default function UserLayout({ children }) {
                 className={`flex items-center gap-x-3 px-4 py-2 pl-5 ${path === '/colleges' ? 'bg-gray-700' : ''}`}
               >
                 <School strokeWidth={2} />
-                <span className='hidden lg:block'>Colleges</span>
+                <span>Colleges</span>
               </Link>
             </li>
             <li className='mb-2'>
@@ -53,7 +53,7 @@ export default function UserLayout({ children }) {
                 className={`flex items-center gap-x-3 px-4 py-2 pl-5 ${path === '/profile' ? 'bg-gray-700' : ''}`}
               >
                 <UserRoundPen strokeWidth={2} />
-                <span className='hidden lg:block'>Profile</span>
+                <span>Profile</span>
               </Link>
             </li>
             <li className='mb-2'>
@@ -62,7 +62,7 @@ export default function UserLayout({ children }) {
                 className={`flex items-center gap-x-3 px-4 py-2 pl-5 ${path === '/retrieve-chats' ? 'bg-gray-700' : ''}`}
               >
                 <SquareMousePointer strokeWidth={2} />
-                <span className='hidden lg:block'>Retrieve</span>
+                <span>Retrieve</span>
               </Link>
             </li>
           </ul>
