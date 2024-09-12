@@ -262,8 +262,8 @@ export default function Home() {
             <a href='/' className='text-white hover:text-gray-300'>
               Colleges
             </a>
-            <a href='/' className='text-white hover:text-gray-300'>
-              NOC
+            <a href='/admin/login' className='text-white hover:text-gray-300'>
+              Admin
             </a>
             <a href='/' className='text-white hover:text-gray-300'>
               Other Links
