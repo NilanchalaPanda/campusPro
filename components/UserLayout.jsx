@@ -5,6 +5,8 @@ import {
   School,
   SquareMousePointer,
   UserRoundPen,
+  Menu,
+  X,
 } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -18,55 +20,59 @@ export default function UserLayout({ children }) {
     <div className='flex h-screen'>
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-40 w-64 transform bg-gray-800 p-4 text-white transition-transform lg:static lg:translate-x-0 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}
+        className={`fixed inset-y-0 left-0 z-40 w-64 transform bg-[#f3f4f6] p-4 text-white transition-transform lg:static lg:translate-x-0 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}
       >
         <button
-          className='absolute right-4 top-4 z-50 text-white lg:hidden'
-          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          className='absolute right-4 top-4 z-50 lg:hidden'
+          onClick={() => setIsSidebarOpen(false)}
         >
-          {isSidebarOpen ? 'Close' : 'Open'}
+         <X
+  strokeWidth={2}
+  className=' text-black font-bold text-3xl'
+/>
         </button>
-        <h2 className='mb-4 text-xl font-bold'>Sidebar</h2>
-        <nav>
-          <ul>
-            <li className='mb-2'>
-              <Link
-                href='/chat'
-                className={`flex items-center gap-x-3 px-4 py-2 pl-5 ${path === '/chat' ? 'bg-gray-700' : ''}`}
-              >
-                <MessageSquareText strokeWidth={2} />
-                <span className='hidden lg:block'>Chat</span>
-              </Link>
-            </li>
-            <li className='mb-2'>
-              <Link
-                href='/colleges'
-                className={`flex items-center gap-x-3 px-4 py-2 pl-5 ${path === '/colleges' ? 'bg-gray-700' : ''}`}
-              >
-                <School strokeWidth={2} />
-                <span className='hidden lg:block'>Colleges</span>
-              </Link>
-            </li>
-            <li className='mb-2'>
-              <Link
-                href='/profile'
-                className={`flex items-center gap-x-3 px-4 py-2 pl-5 ${path === '/profile' ? 'bg-gray-700' : ''}`}
-              >
-                <UserRoundPen strokeWidth={2} />
-                <span className='hidden lg:block'>Profile</span>
-              </Link>
-            </li>
-            <li className='mb-2'>
-              <Link
-                href='/retrieve-chats'
-                className={`flex items-center gap-x-3 px-4 py-2 pl-5 ${path === '/retrieve-chats' ? 'bg-gray-700' : ''}`}
-              >
-                <SquareMousePointer strokeWidth={2} />
-                <span className='hidden lg:block'>Retrieve</span>
-              </Link>
-            </li>
-          </ul>
-        </nav>
+        <div className='text-gray-800'>
+          <nav>
+            <ul>
+              <li className='mb-2'>
+                <Link
+                  href='/chat'
+                  className={`flex items-center gap-x-3 px-4 py-2 ${path === '/chat' ? 'bg-gray-300 text-gray-800' : 'text-gray-800'}`}
+                >
+                  <MessageSquareText strokeWidth={2} />
+                  <span>Chat</span>
+                </Link>
+              </li>
+              <li className='mb-2'>
+                <Link
+                  href='/colleges'
+                  className={`flex items-center gap-x-3 px-4 py-2 ${path === '/colleges' ? 'bg-gray-300 text-gray-800' : 'text-gray-800'}`}
+                >
+                  <School strokeWidth={2} />
+                  <span>Colleges</span>
+                </Link>
+              </li>
+              <li className='mb-2'>
+                <Link
+                  href='/profile'
+                  className={`flex items-center gap-x-3 px-4 py-2 ${path === '/profile' ? 'bg-gray-300 text-gray-800' : 'text-gray-800'}`}
+                >
+                  <UserRoundPen strokeWidth={2} />
+                  <span>Profile</span>
+                </Link>
+              </li>
+              <li className='mb-2'>
+                <Link
+                  href='/retrieve-chats'
+                  className={`flex items-center gap-x-3 px-4 py-2 ${path === '/retrieve-chats' ? 'bg-gray-300 text-gray-800' : 'text-gray-800'}`}
+                >
+                  <SquareMousePointer strokeWidth={2} />
+                  <span>Retrieve</span>
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </aside>
 
       {/* Overlay for sidebar in mobile */}
@@ -81,12 +87,13 @@ export default function UserLayout({ children }) {
       <main className='flex-1 px-0 md:px-20'>{children}</main>
 
       {/* Sidebar toggle button for mobile */}
+      {/* Sidebar toggle button for mobile */}
       {!isSidebarOpen && (
         <button
-          className='fixed left-4 top-4 z-50 rounded-md bg-gray-800 p-2 text-white lg:hidden'
+          className='fixed z-50  w-full  bg-gray-500 p-2 text-white lg:hidden'
           onClick={() => setIsSidebarOpen(true)}
         >
-          Open
+          <Menu strokeWidth={2} />
         </button>
       )}
     </div>

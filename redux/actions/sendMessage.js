@@ -42,7 +42,7 @@ export function sendChatMessage(data) {
       // If userID is not found, hit the user route to get a new userID
       if (!userID) {
         const userRes = await fetch('http://localhost:3000/api/user', {
-          method: 'PUT',
+          method: 'POST',
           body: JSON.stringify({
             name: '',
             phoneNumber: 0,
@@ -73,6 +73,7 @@ export function sendChatMessage(data) {
 
       // Second API call to store chat data
       console.log(userID, data.message, responseData.output, isValid)
+
       const res2 = await fetch('http://localhost:3000/api/chat', {
         method: 'POST',
         body: JSON.stringify({
@@ -88,6 +89,8 @@ export function sendChatMessage(data) {
       })
 
       const chatData = await res2.json()
+      console.log(chatData)
+      
       if (!res2.ok) throw new Error('Failed to save chat')
     } catch (error) {
       dispatch(sendChatMessageFailed(error.message))
