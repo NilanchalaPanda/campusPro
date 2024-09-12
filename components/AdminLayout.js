@@ -60,7 +60,7 @@ export default function AdminLayout({ children }) {
       )}
 
       {/* Main Content */}
-      <main className='flex-1 px-0 md:px-20'>{children}</main>
+      <main className='flex-1 px-0 md:px-20 overflow-x-auto h-[100vh]'>{children}</main>
 
       {/* Sidebar toggle button for mobile */}
       {!isSidebarOpen && (
