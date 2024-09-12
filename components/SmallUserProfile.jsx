@@ -4,6 +4,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { validationSchema } from '@/utils/validationSchema'
+import toast from 'react-hot-toast'
 
 function SmallUserProfile() {
   const {
@@ -13,41 +14,42 @@ function SmallUserProfile() {
     reset,
   } = useForm({
     resolver: yupResolver(validationSchema),
-  })
+  })  
   async function onSubmit(data) {
-    console.log(data);
-  
+    console.log(data)
+
     // Fetch userID from localStorage
-    const userID = localStorage.getItem('userID');
-  
+    const userID = localStorage.getItem('userID')
+
     // If no userID is found, handle it (either throw an error or create a new user, depending on your logic)
     if (!userID) {
-      console.error('No userID found in localStorage.');
-      return;
+      console.error('No userID found in localStorage.')
+      return
     }
-  
+
     // Append userID to the data being sent to the backend
     const updatedData = {
       ...data,
       userID, // Add the userID from localStorage
-    };
-  
+    }
+
     try {
       const userRes = await fetch('http://localhost:3000/api/user', {
-        method: 'PUT',
+        method: 'PATCH',
         body: JSON.stringify(updatedData), // Pass the updated data with userID
         headers: {
           'Content-Type': 'application/json',
         },
-      });
-  
-      const userData = await userRes.json();
-      console.log(userData);
+      })
+
+      const userData = await userRes.json()
+      // console.log(userData)
+      reset()
+      toast.success('Preferences updated successfully')
     } catch (e) {
-      console.error(e);
+      console.error(e)
     }
   }
-  
 
   const getErrorMessage = (field) => {
     switch (field) {

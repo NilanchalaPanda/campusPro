@@ -16,7 +16,6 @@ if(!id){
 const id = localStorage.getItem(userID);
 hit this route and pass the userID saved in localstorage, creating a new chat document. ALSO handle the voting: NULL and isValid: true... fields.
 */
-
 export async function POST(request) {
   try {
     await connectToDb()
@@ -30,7 +29,7 @@ export async function POST(request) {
         { status: 400 },
       )
     }
-    console.log("first")
+    // console.log("first")
 
     const newChat = Chat.create({
       input,
