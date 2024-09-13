@@ -1,4 +1,4 @@
- import {
+import {
   sendChatMessageFailed,
   sendChatMessageStart,
   sendChatMessageSuccess,
@@ -69,10 +69,10 @@ export function sendChatMessage(data) {
       }
 
       // Check if the response is valid
-      const isValid = !responseData.output.startsWith("I'm sorry")
-
+      // const isValid = !responseData.output.toLowerCase().includes("i'm sorry");
+      const isValid = true
+      console.log(isValid)
       // Second API call to store chat data
-      console.log(userID, data.message, responseData.output, isValid)
 
       const res2 = await fetch('http://localhost:3000/api/chat', {
         method: 'POST',
@@ -90,7 +90,7 @@ export function sendChatMessage(data) {
 
       const chatData = await res2.json()
       console.log(chatData)
-      
+
       if (!res2.ok) throw new Error('Failed to save chat')
     } catch (error) {
       dispatch(sendChatMessageFailed(error.message))

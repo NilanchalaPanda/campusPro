@@ -1,5 +1,5 @@
 'use client'
-
+import jsPDF from 'jspdf'
 import {
   MicIcon,
   School2Icon,
@@ -192,7 +192,6 @@ export default function ChatSectionComponent() {
     setIsFAQOpen(!isFAQOpen)
   }
 
-
   return (
     <div className='flex h-full flex-col rounded-l-2xl bg-white p-4'>
       <div
@@ -225,7 +224,11 @@ export default function ChatSectionComponent() {
                         <BeatLoader color='purple' />
                       </div>
                     ) : (
-                      message.response
+                      <>
+                        {message.response}
+                        {/* {handleResponse(message.response)}  */}
+                        {/* Check for PDF request */}
+                      </>
                     )}
                   </div>
                 </div>

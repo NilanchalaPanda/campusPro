@@ -25,20 +25,6 @@ const tableData = [
 function Analytics() {
   const [userCount, setUserCount] = useState(500)
 
-  useEffect(() => {
-    const fetchUsercount = async () => {
-      try {
-        const response = await fetch('api/admin/usercount')
-        const data = await response.json()
-        setUserCount(data.userCount)
-      } catch {
-        console.error('Failed to fetch the number of users and the query count')
-      }
-    }
-
-    fetchUsercount()
-  }, [])
-
   return (
     <div>
       <h1 className='px-4 pb-3 pt-4 text-3xl font-bold text-gray-900'>
