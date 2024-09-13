@@ -32,7 +32,7 @@ export default function AdminLayout({ children }) {
             <li className='mb-2'>
               <Link
                 href='/admin/analytics'
-                className={`flex items-center gap-x-3 px-4 py-2 pl-5 ${path === '/chat' ? 'bg-gray-700' : ''}`}
+                className={`flex items-center gap-x-3 rounded-xl px-4 py-2 pl-5 ${path === '/chat' ? 'bg-gray-500 font-extrabold text-purple-600' : ''}`}
               >
                 <MessageSquareText strokeWidth={2} />
                 <span className='hidden lg:block'>Analytics</span>

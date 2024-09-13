@@ -26,47 +26,60 @@ export default function UserLayout({ children }) {
           className='absolute right-4 top-4 z-50 lg:hidden'
           onClick={() => setIsSidebarOpen(false)}
         >
-         <X
-  strokeWidth={2}
-  className=' text-black font-bold text-3xl'
-/>
+          <X strokeWidth={2} className='text-3xl font-bold text-black' />
         </button>
         <div className='text-gray-800'>
           <nav>
             <ul>
               <li className='mb-2'>
                 <Link
+                  onClick={() => setIsSidebarOpen(false)}
                   href='/chat'
-                  className={`flex items-center gap-x-3 px-4 py-2 ${path === '/chat' ? 'bg-gray-300 text-gray-800' : 'text-gray-800'}`}
+                  className={`flex items-center gap-x-3 rounded-xl px-4 py-2 font-semibold ${path === '/chat' ? 'bg-gray-200 text-gray-700' : 'text-gray-800'}`}
                 >
-                  <MessageSquareText strokeWidth={2} />
+                  <MessageSquareText
+                    className={`${path === '/chat' ? 'text-purple-500' : ''}`}
+                    strokeWidth={3}
+                  />
                   <span>Chat</span>
                 </Link>
               </li>
               <li className='mb-2'>
                 <Link
+                  onClick={() => setIsSidebarOpen(false)}
                   href='/colleges'
-                  className={`flex items-center gap-x-3 px-4 py-2 ${path === '/colleges' ? 'bg-gray-300 text-gray-800' : 'text-gray-800'}`}
+                  className={`flex items-center gap-x-3 rounded-xl px-4 py-2 font-semibold ${path === '/colleges' ? 'bg-gray-200 text-gray-700' : 'text-gray-800'}`}
                 >
-                  <School strokeWidth={2} />
+                  <School
+                    className={`${path === '/colleges' ? 'text-purple-500' : ''}`}
+                    strokeWidth={3}
+                  />
                   <span>Colleges</span>
                 </Link>
               </li>
               <li className='mb-2'>
                 <Link
+                  onClick={() => setIsSidebarOpen(false)}
                   href='/profile'
-                  className={`flex items-center gap-x-3 px-4 py-2 ${path === '/profile' ? 'bg-gray-300 text-gray-800' : 'text-gray-800'}`}
+                  className={`flex items-center gap-x-3 rounded-xl px-4 py-2 font-semibold ${path === '/profile' ? 'bg-gray-200 text-gray-700' : 'text-gray-800'}`}
                 >
-                  <UserRoundPen strokeWidth={2} />
+                  <UserRoundPen
+                    className={`${path === '/profile' ? 'text-purple-500' : ''}`}
+                    strokeWidth={3}
+                  />
                   <span>Profile</span>
                 </Link>
               </li>
               <li className='mb-2'>
                 <Link
+                  onClick={() => setIsSidebarOpen(false)}
                   href='/retrieve-chats'
-                  className={`flex items-center gap-x-3 px-4 py-2 ${path === '/retrieve-chats' ? 'bg-gray-300 text-gray-800' : 'text-gray-800'}`}
+                  className={`flex items-center gap-x-3 rounded-xl px-4 py-2 font-semibold ${path === '/retrieve-chats' ? 'bg-gray-200 text-gray-700' : 'text-gray-800'}`}
                 >
-                  <SquareMousePointer strokeWidth={2} />
+                  <SquareMousePointer
+                    className={`${path === '/retrieve-chats' ? 'text-purple-500' : ''}`}
+                    strokeWidth={3}
+                  />
                   <span>Retrieve</span>
                 </Link>
               </li>
@@ -90,7 +103,7 @@ export default function UserLayout({ children }) {
       {/* Sidebar toggle button for mobile */}
       {!isSidebarOpen && (
         <button
-          className='fixed z-50  w-full  bg-gray-500 p-2 text-white lg:hidden'
+          className='fixed z-50 w-full bg-gray-200 p-2 lg:hidden'
           onClick={() => setIsSidebarOpen(true)}
         >
           <Menu strokeWidth={2} />
