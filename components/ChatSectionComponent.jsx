@@ -161,6 +161,8 @@ export default function ChatSectionComponent() {
       }
 
       const data = await response.json()
+      const index = chatState.chat.length
+      setLoadingIndex(index)
       dispatch(sendChatMessage({ message: data.text }))
       setError('')
     } catch (err) {

@@ -26,7 +26,7 @@ export default function AdminLayout({ children }) {
         >
           {isSidebarOpen ? 'Close' : 'Open'}
         </button>
-        <h2 className='mb-4 text-xl font-bold'>Sidebar</h2>
+        <h2 className='mb-4 text-xl font-bold'>Admin</h2>
         <nav>
           <ul>
             <li className='mb-2'>
