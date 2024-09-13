@@ -1,15 +1,13 @@
 import React from 'react'
 
-function SingleCollegeTab({ item }) {
+function SingleCollegeTab({ College, Description }) {
   return (
     <div className='rounded-xl bg-gray-100 p-2 shadow-sm'>
       <h1 className='text-lg font-bold'>
-        Vivekanand Education Socities Institute of Technology
+        {College}
       </h1>
       <p className='mt-2 text-sm font-bold text-gray-500'>
-        Vivekanand Education Socities Institute of Technology, Rourkela, is an
-        institute of National Importance, Government of Odisha. The institute
-        was established in the year 2000.
+        {Description}
       </p>
     </div>
   )
