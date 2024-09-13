@@ -21,7 +21,7 @@ export async function POST(request) {
     await connectToDb()
 
     const { userID, input, response, voting, isValid } = await request.json()
-    console.log(userID, input, response, voting, isValid )
+    console.log(userID, input, response, voting, isValid)
     // Validate input fields
     if (!userID || !input || !response || !voting || !isValid) {
       return NextResponse.json(
@@ -29,19 +29,19 @@ export async function POST(request) {
         { status: 400 },
       )
     }
-    // console.log("first")
 
-    const newChat = Chat.create({
+    const newChat = new Chat({
       input,
       response,
       voting: 'None',
       isValid,
     })
 
-    // Updating the chatIDs array in UserSchema
+    const result = await newChat.save()
+
     await User.findByIdAndUpdate(
       userID,
-      { $push: { chatIDs: newChat._id } },
+      { $push: { chatIDs: result._id } },
       { new: true },
     )
 
