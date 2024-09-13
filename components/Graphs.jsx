@@ -38,7 +38,7 @@ const Graphs = ({ data}) => {
   return (
     <div className="h-[100%]">
       {/* Bar and Pie Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-10 gap-20 h-full">
+      <div className="grid grid-cols-1 lg:grid-cols-10 gap-10 h-full">
         {/* Bar Chart */}
         <div className="lg:col-span-7 h-full">
           <ResponsiveContainer className="p-4 shadow-2xl shadow-neutral-600/20 border" height="100%" width="100%">
@@ -46,7 +46,7 @@ const Graphs = ({ data}) => {
               <XAxis dataKey="name" stroke="#888888" fontSize={12} className="font-bold" tickLine={false} axisLine={false} />
               <YAxis stroke="#888888" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(value) => `${value}`} />
               <Tooltip itemStyle={{ fontWeight: 400, color: "#000" }} contentStyle={{ backgroundColor: "#fff" }} />
-              <Bar dataKey="pv" fill="#aa44ea" radius={[10, 10, 0, 0]} />
+              <Bar dataKey="Queries" fill="#1359A1" radius={[10, 10, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -55,7 +55,7 @@ const Graphs = ({ data}) => {
         <div className="lg:col-span-3 h-full">
           <ResponsiveContainer className="flex items-center justify-center p-4 shadow-2xl shadow-neutral-600/20 border" width="120%" height="100%">
             <PieChart>
-              <Pie data={data} innerRadius={80} outerRadius={120} fill="#aa44ea" paddingAngle={5} dataKey="pv" />
+              <Pie data={data} innerRadius={80} outerRadius={120} fill="#1359A1" paddingAngle={5} dataKey="Queries" />
               <Tooltip />
               <Legend />
             </PieChart>

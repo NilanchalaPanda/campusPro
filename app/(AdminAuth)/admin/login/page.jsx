@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
@@ -44,7 +45,19 @@ export default function AdminLogin() {
 
   return (
     <div className='flex h-screen items-center justify-center bg-gray-50'>
-      <div className='w-full max-w-md bg-white p-8 shadow-lg'>
+      <div className='flex w-full max-w-md flex-col bg-white p-8 shadow-lg'>
+        <div className='mb-4 flex items-center justify-center space-x-5 px-5 text-center text-xl font-bold'>
+          <Image
+            src='/Stateemblem.png'
+            className='mx-auto'
+            width={50}
+            height={80}
+            alt='State Logo  '
+          />
+          <p className='text-left text-2xl'>
+            Government of Technical Education
+          </p>
+        </div>
         <h1 className='mb-6 text-center text-2xl font-bold text-[#1359a1]'>
           Admin Login
         </h1>

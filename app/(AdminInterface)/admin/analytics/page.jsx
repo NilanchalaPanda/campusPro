@@ -6,16 +6,16 @@ import Graphs from '@/components/Graphs'
 import React from 'react'
 
 const data = [
-  { name: 'Maharastra', pv: 8, amt: 8 },
-  { name: 'Rajasthan', pv: 10, amt: 10 },
-  { name: 'Punjab', pv: 6, amt: 6 },
-  { name: 'Gujrat', pv: 4, amt: 4 },
-  { name: 'Andhra Pradesh', pv: 9, amt: 9 },
+  { name: 'Maharastra', Queries: 8, amt: 8 },
+  { name: 'Rajasthan', Queries: 10, amt: 10 },
+  { name: 'Punjab', Queries: 6, amt: 6 },
+  { name: 'Gujrat', Queries: 4, amt: 4 },
+  { name: 'Andhra Pradesh', Queries: 9, amt: 9 },
 ]
 
 const tableData = [
+  { name: 'Nilanchal', state: 'Maharasthra', queries: 4, resolved: 100 },
   { name: 'Shreyash', state: 'Maharashtra', queries: 10, resolved: 100 },
-  { name: 'Nilanchal', state: 'Rajasthan', queries: 15, resolved: 100 },
   { name: 'Shreya', state: 'Punjab', queries: 5, resolved: 100 },
   { name: 'Usmaan', state: 'Gujarat', queries: 7, resolved: 100 },
   { name: 'Atharva', state: 'Andhra Pradesh', queries: 8, resolved: 100 },
@@ -40,34 +40,42 @@ function Analytics() {
   }, [])
 
   return (
-    <div className='space-y-8 p-8'>
-      <h1 className="font-bold text-4xl text-gray-900 px-4 py-4">Analytics </h1>
-      <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
-        <Card subheading='No. of Users' count={userCount} />
-        <Card subheading='No. of Queries' count={24} />
-        <Card subheading='No. of Critical Requests' count={45} />
-        <Card subheading='Trending Topic' count={69} />
+    <div>
+      <h1 className='px-4 pb-3 pt-4 text-3xl font-bold text-gray-900'>
+        Analytics{' '}
+      </h1>
+      <div className='grid grid-cols-1 gap-4 md:grid-cols-4'>
+        <Card subheading='No. of Users' count={6} />
+        <Card subheading='No. of Queries' count={44} />
+        <Card subheading='No. of Critical Requests' count={4} />
+        <Card subheading='Resolved Percentage' count={100} />
       </div>
 
-      <div className='h-[55vh] pt-10'>
+      <div className='h-[55vh] w-[95%] pt-5'>
+        <h1 className='px-4 pb-3 pt-4 text-3xl font-bold text-gray-900'>
+          Query Statistics
+        </h1>
         <Graphs data={data} />
       </div>
 
-      <div className='pt-6'>
+      <div className='mt-20 pb-10 pt-6'>
+        <h1 className='px-4 pb-3 pt-4 text-3xl font-bold text-gray-900'>
+          User Details
+        </h1>
         <div className='overflow-x-auto rounded-lg border border-gray-200 shadow-lg'>
           <table className='min-w-full divide-y divide-gray-200'>
             <thead className='bg-gray-50'>
               <tr>
-                <th className='px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-gray-500'>
+                <th className='text-md px-6 py-3 text-left font-bold uppercase tracking-wider text-blue-500'>
                   Name
                 </th>
-                <th className='px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-gray-500'>
+                <th className='text-md px-6 py-3 text-left font-bold uppercase tracking-wider text-blue-500'>
                   State
                 </th>
-                <th className='px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-gray-500'>
+                <th className='text-md px-6 py-3 text-left font-bold uppercase tracking-wider text-blue-500'>
                   No. of Queries
                 </th>
-                <th className='px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-gray-500'>
+                <th className='text-md px-6 py-3 text-left font-bold uppercase tracking-wider text-blue-500'>
                   Resolved Queries %
                 </th>
               </tr>
@@ -75,16 +83,16 @@ function Analytics() {
             <tbody className='divide-y divide-gray-200 bg-white'>
               {tableData.map((row, index) => (
                 <tr key={index}>
-                  <td className='whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900'>
+                  <td className='whitespace-nowrap px-6 py-4 text-sm font-semibold text-gray-900'>
                     {row.name}
                   </td>
-                  <td className='whitespace-nowrap px-6 py-4 text-sm text-gray-500'>
+                  <td className='whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-500'>
                     {row.state}
                   </td>
-                  <td className='whitespace-nowrap px-6 py-4 text-sm text-gray-500'>
+                  <td className='whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-500'>
                     {row.queries}
                   </td>
-                  <td className='whitespace-nowrap px-6 py-4 text-sm text-gray-500'>
+                  <td className='whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-500'>
                     {row.resolved}%
                   </td>
                 </tr>

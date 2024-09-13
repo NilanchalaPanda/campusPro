@@ -1,17 +1,13 @@
 // components/Card.js
-import React from 'react';
+import React from 'react'
 
 const Card = ({ subheading, count }) => {
   return (
-    <div className="bg-white shadow-lg rounded-lg p-6 border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-      <div className="text-sm font-medium text-gray-600 dark:text-gray-300">
-        {subheading}
-      </div>
-      <div className="text-3xl font-semibold text-gray-900 dark:text-gray-100 mt-2">
-        {count}
-      </div>
+    <div className='flex flex-col gap-x-5 rounded-lg border-2 border-blue-700 bg-blue-400/70 p-3 text-black shadow-lg'>
+      <div className='text-xl font-medium'>{subheading}</div>
+      <div className='text-3xl font-semibold'>{count}</div>
     </div>
-  );
-};
+  )
+}
 
-export default Card;
+export default Card

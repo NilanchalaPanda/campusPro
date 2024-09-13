@@ -6,6 +6,7 @@ import {
   SquareMousePointer,
   UserRoundPen,
 } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
@@ -18,7 +19,7 @@ export default function AdminLayout({ children }) {
     <div className='flex h-screen'>
       {/* Sidebar */}
       <aside
-        className={`fixed inset-y-0 left-0 z-40 w-64 transform bg-gray-800 p-4 text-white transition-transform lg:static lg:translate-x-0 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}
+        className={`fixed inset-y-0 left-0 z-40 w-64 transform bg-gray-300/50 p-4 transition-transform lg:static lg:translate-x-0 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}
       >
         <button
           className='absolute right-4 top-4 z-50 text-white lg:hidden'
@@ -26,25 +27,39 @@ export default function AdminLayout({ children }) {
         >
           {isSidebarOpen ? 'Close' : 'Open'}
         </button>
-        <h2 className='mb-4 text-xl font-bold'>Admin</h2>
+        <h2 className='mb-4 flex items-center justify-center border-4 border-b-black text-center text-xl font-bold'>
+          <Image
+            src='/Stateemblem.png'
+            width={40}
+            height={70}
+            alt='State Logo  '
+          />
+          Government of Technical Education
+        </h2>
         <nav>
           <ul>
             <li className='mb-2'>
               <Link
                 href='/admin/analytics'
-                className={`flex items-center gap-x-3 rounded-xl px-4 py-2 pl-5 ${path === '/chat' ? 'bg-gray-500 font-extrabold text-purple-600' : ''}`}
+                className={`flex items-center gap-x-3 rounded-xl px-4 py-3 pl-5 font-medium ${path === '/admin/analytics' ? 'bg-gray-100 font-semibold text-gray-900' : ''}`}
               >
-                <MessageSquareText strokeWidth={2} />
+                <MessageSquareText
+                  className={`${path === '/admin/analytics' ? 'text-blue-700' : ''}`}
+                  strokeWidth={2}
+                />
                 <span className='hidden lg:block'>Analytics</span>
               </Link>
             </li>
             <li className='mb-2'>
               <Link
                 href='/admin/queries'
-                className={`flex items-center gap-x-3 px-4 py-2 pl-5 ${path === '/colleges' ? 'bg-gray-700' : ''}`}
+                className={`flex items-center gap-x-3 rounded-xl px-4 py-3 pl-5 font-medium ${path === '/admin/queries' ? 'bg-gray-100 font-semibold text-gray-900' : ''}`}
               >
-                <School strokeWidth={2} />
-                <span className='hidden lg:block'>Queries</span>
+                <School
+                  strokeWidth={2}
+                  className={`${path === '/admin/queries' ? 'text-blue-700' : ''}`}
+                />
+                <span className='hidden lg:block'>Critical Queries</span>
               </Link>
             </li>
           </ul>
@@ -60,7 +75,9 @@ export default function AdminLayout({ children }) {
       )}
 
       {/* Main Content */}
-      <main className='flex-1 px-0 md:px-20 overflow-x-auto h-[100vh]'>{children}</main>
+      <main className='h-[100vh] flex-1 overflow-x-auto px-0 md:px-20'>
+        {children}
+      </main>
 
       {/* Sidebar toggle button for mobile */}
       {!isSidebarOpen && (
