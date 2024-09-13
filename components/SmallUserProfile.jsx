@@ -336,6 +336,8 @@ import { validationSchema } from '@/utils/validationSchema'
 import toast from 'react-hot-toast'
 
 function SmallUserProfile() {
+  localStorage.setItem('PageLoaded', true)
+
   const {
     register,
     handleSubmit,

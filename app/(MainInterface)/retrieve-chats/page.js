@@ -13,7 +13,7 @@ function RetrieveChats() {
           placeholder='Enter your phone number'
           className='w-full max-w-md rounded-lg border border-gray-300 p-3 text-base mb-4'
         />
-        <button className=' max-w-md rounded-lg bg-purple-500 px-4 py-3 text-white text-base hover:bg-purple-600'>
+        <button className=' max-w-md rounded-lg bg-blue-500 px-4 py-3 text-white text-base hover:bg-blue-600'>
           Retrieve Chats
         </button>
       </div>

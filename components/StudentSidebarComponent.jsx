@@ -21,7 +21,7 @@ const   StudentSidebarComponent = () => {
         <Link
           href='/chat'
           key='Chat'
-          className={`flex items-center justify-center gap-4 rounded-md py-2 md:px-2 lg:justify-start ${path == '/chat' ? 'bg-purple-300' : ''}`}
+          className={`flex items-center justify-center gap-4 rounded-md py-2 md:px-2 lg:justify-start ${path == '/chat' ? 'bg-blue-300' : ''}`}
         >
           <ChartAreaIcon />
           <span className='hidden lg:block'>Chat</span>
@@ -29,7 +29,7 @@ const   StudentSidebarComponent = () => {
         <Link
           href='/colleges'
           key='Colleges'
-          className={`flex items-center justify-center gap-4 rounded-md py-2 md:px-2 lg:justify-start ${path == '/colleges' ? 'bg-purple-300' : ''}`}
+          className={`flex items-center justify-center gap-4 rounded-md py-2 md:px-2 lg:justify-start ${path == '/colleges' ? 'bg-blue-300' : ''}`}
         >
           <School />
           <span className='hidden lg:block'>Colleges</span>
@@ -38,7 +38,7 @@ const   StudentSidebarComponent = () => {
       <div>
         <Link
           href='/profile'
-          className={`flex items-center justify-center gap-4 rounded-md py-2 md:px-2 lg:justify-start ${path == '/profile' ? 'bg-purple-300' : ''}`}
+          className={`flex items-center justify-center gap-4 rounded-md py-2 md:px-2 lg:justify-start ${path == '/profile' ? 'bg-blue-300' : ''}`}
         >
           <User2Icon />
           <span className='hidden lg:block'>Profile</span>

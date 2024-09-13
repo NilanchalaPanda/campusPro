@@ -14,7 +14,7 @@ function SmallRetriveChat() {
           placeholder='Enter your phone number'
           className='mt-4 w-3/4 rounded-lg border border-gray-300 p-2'
         />
-        <button className='mt-4 rounded-lg bg-purple-500 px-4 py-2 text-white hover:bg-purple-600'>
+        <button className='mt-4 rounded-lg bg-blue-500 px-4 py-2 text-white hover:bg-blue-600'>
           Retrieve Chats
         </button>
       </div>

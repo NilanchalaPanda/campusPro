@@ -1,5 +1,5 @@
 'use client'
-import jsPDF from 'jspdf'
+// import jsPDF from 'jspdf'
 import {
   MicIcon,
   School2Icon,
@@ -211,7 +211,7 @@ export default function ChatSectionComponent() {
               <div key={index}>
                 {/* User Message */}
                 <div className='flex justify-end'>
-                  <div className='max-w-xs rounded-lg bg-purple-500 p-3 text-white shadow-md'>
+                  <div className='max-w-xs rounded-lg bg-blue-500 px-3 py-2 text-white shadow-md'>
                     {message.input}
                   </div>
                 </div>
@@ -221,7 +221,7 @@ export default function ChatSectionComponent() {
                     {loadingIndex === index &&
                     chatState.status === 'loading' ? (
                       <div className='flex items-center'>
-                        <BeatLoader color='purple' />
+                        <BeatLoader color='blue' />
                       </div>
                     ) : (
                       <>
@@ -242,8 +242,8 @@ export default function ChatSectionComponent() {
                       className='transform cursor-pointer transition-all duration-300 ease-in-out hover:scale-110'
                       height={20}
                       width={20}
-                      stroke='rgb(168 85 247)'
-                      fill={liked === index ? 'rgb(168 85 247)' : 'none'}
+                      stroke='rgb(40 10 255)'
+                      fill={liked === index ? 'rgb(40 10 255)' : 'none'}
                     />
                     <ThumbsDown
                       onClick={() => {
@@ -253,8 +253,8 @@ export default function ChatSectionComponent() {
                       className='mt-1 transform cursor-pointer transition-all duration-300 ease-in-out hover:scale-110'
                       height={20}
                       width={20}
-                      stroke='rgb(168 85 247)'
-                      fill={disliked === index ? 'rgb(168 85 247)' : 'none'}
+                      stroke='rgb(40 10 255)'
+                      fill={disliked === index ? 'rgb(40 10 255)' : 'none'}
                     />
                   </div>
                 )}
@@ -313,7 +313,7 @@ export default function ChatSectionComponent() {
                     handleFAQClick({ question, ...others })
                     setIsFAQOpen(false)
                   }}
-                  className='w-full rounded-lg bg-purple-100 px-4 py-2 text-left text-purple-900 shadow-md'
+                  className='w-full rounded-lg bg-blue-100 px-4 py-2 text-left text-blue-900 shadow-md'
                 >
                   {question}
                 </button>
@@ -345,7 +345,7 @@ export default function ChatSectionComponent() {
         </button>
         <button
           onClick={handleSendMessage}
-          className='rounded-full bg-purple-500 p-2 hover:bg-purple-600'
+          className='rounded-full bg-blue-500 p-2 hover:bg-blue-600'
         >
           <SendHorizontalIcon color='white' size={20} />
         </button>

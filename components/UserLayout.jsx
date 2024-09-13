@@ -38,7 +38,7 @@ export default function UserLayout({ children }) {
                   className={`flex items-center gap-x-3 rounded-xl px-4 py-2 font-semibold ${path === '/chat' ? 'bg-gray-200 text-gray-700' : 'text-gray-800'}`}
                 >
                   <MessageSquareText
-                    className={`${path === '/chat' ? 'text-purple-500' : ''}`}
+                    className={`${path === '/chat' ? 'text-blue-500' : ''}`}
                     strokeWidth={3}
                   />
                   <span>Chat</span>
@@ -51,7 +51,7 @@ export default function UserLayout({ children }) {
                   className={`flex items-center gap-x-3 rounded-xl px-4 py-2 font-semibold ${path === '/colleges' ? 'bg-gray-200 text-gray-700' : 'text-gray-800'}`}
                 >
                   <School
-                    className={`${path === '/colleges' ? 'text-purple-500' : ''}`}
+                    className={`${path === '/colleges' ? 'text-blue-500' : ''}`}
                     strokeWidth={3}
                   />
                   <span>Colleges</span>
@@ -64,7 +64,7 @@ export default function UserLayout({ children }) {
                   className={`flex items-center gap-x-3 rounded-xl px-4 py-2 font-semibold ${path === '/profile' ? 'bg-gray-200 text-gray-700' : 'text-gray-800'}`}
                 >
                   <UserRoundPen
-                    className={`${path === '/profile' ? 'text-purple-500' : ''}`}
+                    className={`${path === '/profile' ? 'text-blue-500' : ''}`}
                     strokeWidth={3}
                   />
                   <span>Profile</span>
@@ -77,7 +77,7 @@ export default function UserLayout({ children }) {
                   className={`flex items-center gap-x-3 rounded-xl px-4 py-2 font-semibold ${path === '/retrieve-chats' ? 'bg-gray-200 text-gray-700' : 'text-gray-800'}`}
                 >
                   <SquareMousePointer
-                    className={`${path === '/retrieve-chats' ? 'text-purple-500' : ''}`}
+                    className={`${path === '/retrieve-chats' ? 'text-blue-500' : ''}`}
                     strokeWidth={3}
                   />
                   <span>Retrieve</span>

@@ -11,13 +11,13 @@ function Admin() {
       </div>
       <Link
         href='/admin/analytics'
-        className='text-2xl font-bold text-purple-500 hover:cursor-pointer'
+        className='text-2xl font-bold text-blue-500 hover:cursor-pointer'
       >
         NEW ADMIN
       </Link>
       <Link
         href='/admin/queries'
-        className='text-2xl font-bold text-purple-500 hover:cursor-pointer'
+        className='text-2xl font-bold text-blue-500 hover:cursor-pointer'
       >
         QUERIES
       </Link>

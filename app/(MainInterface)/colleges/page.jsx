@@ -42,7 +42,7 @@ function Colleges() {
           />
           <p className='px-2 text-center text-lg font-medium md:text-xl'>
             Oops! You have not yet added your{' '}
-            <span className='font-bold text-purple-600'>
+            <span className='font-bold text-blue-600'>
               COLLEGE PREFERENCES
             </span>
           </p>

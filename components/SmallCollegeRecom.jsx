@@ -5,7 +5,9 @@ import React, { useState } from 'react'
 import SingleCollegeTab from './SingleCollegeTab'
 
 function SmallCollegeRecom() {
-  const [collegeList, setCollegeList] = useState([])
+  // const [collegeList, setCollegeList] = useState('')
+  const setCollegeList = localStorage.getItem('PageLoaded')
+  console.log(setCollegeList)
 
   return (
     <div className='h-full rounded-l-2xl bg-white py-2 md:p-3'>
@@ -13,7 +15,7 @@ function SmallCollegeRecom() {
         COLLEGE RECOMMENDATIONS
       </h1>
 
-      {collegeList.length === 0 ? (
+      {setCollegeList ? (
         <div className='mt-2 flex h-[85%] flex-col items-center justify-start space-y-2 overflow-y-auto rounded-xl px-2 md:px-0'>
           {/* Real Engineering Colleges in Mumbai */}
           <SingleCollegeTab
@@ -64,9 +66,7 @@ function SmallCollegeRecom() {
           />
           <p className='px-4 text-center text-xl font-medium'>
             Oops! You have not yet added your{' '}
-            <span className='font-bold text-purple-600'>
-              COLLEGE PREFERENCES
-            </span>
+            <span className='font-bold text-blue-600'>COLLEGE PREFERENCES</span>
           </p>
         </div>
       )}

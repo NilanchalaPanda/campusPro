@@ -216,7 +216,7 @@ export default function Home() {
       {!isModalOpen && (
         <button
           onClick={toggleModal}
-          className='fixed bottom-5 right-5 rounded-full border-2 border-purple-400 bg-purple-300 p-3 hover:cursor-pointer md:bottom-10 md:right-10'
+          className='fixed bottom-5 right-5 rounded-full border-2 border-blue-400 bg-blue-300 p-3 hover:cursor-pointer md:bottom-10 md:right-10'
         >
           <MessageCircleCodeIcon size={40} />
         </button>
