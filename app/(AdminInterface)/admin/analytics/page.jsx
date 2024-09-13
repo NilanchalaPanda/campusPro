@@ -41,6 +41,7 @@ function Analytics() {
 
   return (
     <div className='space-y-8 p-8'>
+      <h1 className="font-bold text-4xl text-gray-900 px-4 py-4">Analytics </h1>
       <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
         <Card subheading='No. of Users' count={userCount} />
         <Card subheading='No. of Queries' count={24} />
