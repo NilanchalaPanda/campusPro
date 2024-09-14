@@ -1,13 +1,24 @@
 'use client'
 
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import SingleCollegeTab from './SingleCollegeTab'
 
 function SmallCollegeRecom() {
-  // const [collegeList, setCollegeList] = useState('')
-  const setCollegeList = localStorage.getItem('PageLoaded')
-  console.log(setCollegeList)
+  const [isLoading, setIsLoading] = useState(false)
+  const [collegeList, setCollegeList] = useState(null)
+
+  useEffect(() => {
+    const savedCollegeList = localStorage.getItem('PageLoaded')
+
+    if (savedCollegeList) {
+      setIsLoading(true) // Show loader only if the collegeList exists
+      setTimeout(() => {
+        setCollegeList(savedCollegeList)
+        setIsLoading(false) // Hide loader after 3 seconds
+      }, 3000) // 3 seconds loading time
+    }
+  }, [])
 
   return (
     <div className='h-full rounded-l-2xl bg-white py-2 md:p-3'>
@@ -15,9 +26,15 @@ function SmallCollegeRecom() {
         COLLEGE RECOMMENDATIONS
       </h1>
 
-      {setCollegeList ? (
+      {isLoading ? (
+        <div className='flex h-[85%] items-center justify-center'>
+          <div className='flex items-center space-x-2'>
+            <div className='h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-500 border-t-transparent'></div>
+            <p className='text-xl font-medium'>Loading...</p>
+          </div>
+        </div>
+      ) : collegeList ? (
         <div className='mt-2 flex h-[85%] flex-col items-center justify-start space-y-2 overflow-y-auto rounded-xl px-2 md:px-0'>
-          {/* Real Engineering Colleges in Mumbai */}
           <SingleCollegeTab
             College={'Veermata Jijabai Technological Institute (VJTI)'}
             Description={
@@ -56,7 +73,6 @@ function SmallCollegeRecom() {
           />
         </div>
       ) : (
-        // Center content when no college recommendations are present
         <div className='flex h-[85%] flex-col items-center justify-center'>
           <Image
             src='/colleges.svg'
