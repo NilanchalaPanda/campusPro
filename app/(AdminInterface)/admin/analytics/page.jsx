@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Card from '@/components/Card'
 import Graphs from '@/components/Graphs'
 import React from 'react'
