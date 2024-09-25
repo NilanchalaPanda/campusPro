@@ -6,20 +6,20 @@ import Graphs from '@/components/Graphs'
 import React from 'react'
 
 const data = [
-  { name: 'Maharastra', Queries: 8, amt: 8 },
-  { name: 'Rajasthan', Queries: 10, amt: 10 },
-  { name: 'Punjab', Queries: 6, amt: 6 },
-  { name: 'Gujrat', Queries: 4, amt: 4 },
-  { name: 'Andhra Pradesh', Queries: 9, amt: 9 },
+  { name: 'Mumbai', Queries: 1, amt: 1 },
+  { name: 'Jaipur', Queries: 2, amt: 2 },
+  { name: 'Lucknow', Queries: 1, amt: 1 },
+  { name: 'Udaipur', Queries: 1, amt: 1 },
+  { name: 'Pune', Queries: 1, amt: 1 },
 ]
 
 const tableData = [
-  { name: 'Nilanchal', state: 'Maharasthra', queries: 4, resolved: 100 },
-  { name: 'Shreyash', state: 'Maharashtra', queries: 10, resolved: 100 },
-  { name: 'Shreya', state: 'Punjab', queries: 5, resolved: 100 },
-  { name: 'Usmaan', state: 'Gujarat', queries: 7, resolved: 100 },
-  { name: 'Atharva', state: 'Andhra Pradesh', queries: 8, resolved: 100 },
-  { name: 'Himanshu', state: 'Karnataka', queries: 9, resolved: 100 },
+  { name: 'Nilanchal', state: 'Mumbai', queries: 4, resolved: 100 },
+  { name: 'Shreyash', state: 'Jaipur', queries: 10, resolved: 100 },
+  { name: 'Shreya', state: 'Jaipur', queries: 5, resolved: 100 },
+  { name: 'Usmaan', state: 'Udaipur', queries: 7, resolved: 100 },
+  { name: 'Atharva', state: 'Pune', queries: 8, resolved: 100 },
+  { name: 'Himanshu', state: 'Lucknow', queries: 9, resolved: 100 },
 ]
 
 function Analytics() {

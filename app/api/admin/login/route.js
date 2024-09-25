@@ -11,7 +11,7 @@ export async function POST(req) {
     // Handle login
     if (email && !otp) {
       // Check if the email is valid and send OTP
-      if (email !== 'nilanchalpanda2003@gmail.com') {
+      if (email !== '2021.nilanchala.panda@ves.ac.in') {
         return NextResponse.json({
           message: 'User credentials are incorrect',
           status: 404,

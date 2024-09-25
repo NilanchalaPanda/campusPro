@@ -213,7 +213,7 @@ export default function Home() {
         </div>
       </footer>
 
-      {!isModalOpen && (
+      {/* {!isModalOpen && (
         <button
           onClick={toggleModal}
           className='fixed bottom-5 right-5 rounded-full border-2 border-blue-400 bg-blue-300 p-3 hover:cursor-pointer md:bottom-10 md:right-10'
@@ -226,11 +226,28 @@ export default function Home() {
         <div className='fixed bottom-3 right-3 mb-3 flex h-[80vh] w-[90%] max-w-md items-center justify-center rounded-2xl shadow-md md:bottom-10 md:right-10 md:h-[70vh] md:w-[30%]'>
           <button
             onClick={toggleModal}
-            className='absolute right-2 top-3 hover:scale-110'
+            className='absolute z-10 right-2 top-3 hover:scale-110'
           >
             <X strokeWidth={3} />
           </button>
           <SmallChatModel />
+        </div>
+      )} */}
+
+      {/* Modal Trigger/Button */}
+      {!isModalOpen && (
+        <button
+          onClick={toggleModal}
+          className='fixed bottom-5 right-5 rounded-full border-2 border-blue-400 bg-blue-300 p-3 hover:cursor-pointer md:bottom-10 md:right-10'
+        >
+          <MessageCircleCodeIcon size={40} />
+        </button>
+      )}
+
+      {/* Sidebar Modal */}
+      {isModalOpen && (
+        <div className='fixed bottom-3 right-3 mb-3 flex h-[80vh] w-[90%] max-w-md items-center justify-center rounded-2xl shadow-md md:bottom-10 md:right-10 md:h-[70vh] md:w-[30%]'>
+          <SmallChatModel toggleModal={toggleModal} />
         </div>
       )}
     </div>
