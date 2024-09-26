@@ -4,6 +4,8 @@ Welcome to the AI Chatbot for College Assistance project! This AI chatbot is des
 
 ![image](https://github.com/user-attachments/assets/56397509-56ae-4be4-b05c-1f3b74d3b725)
 
+## The User Flow of the CampusPro
+![image](https://github.com/user-attachments/assets/be557719-5e3a-43f8-bc91-2d2c38380b14)
 
 ## Technologies Used
 
