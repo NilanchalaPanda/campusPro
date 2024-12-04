@@ -1,4 +1,4 @@
-# AI Chatbot for College Assistance [🔗](https://youtu.be/mTgY4vUytcM?si=7_1sjQltBWCvUKcm)
+# AI Chatbot for College Assistance [YouTube Link 🔗](https://youtu.be/mTgY4vUytcM?si=7_1sjQltBWCvUKcm)
 
 Welcome to the AI Chatbot for College Assistance project! This AI chatbot is designed to assist students with their college-related queries via a user-friendly interface. Utilizing Next.js for the frontend, WhisperAI for voice queries, Command R+ LLM for real-time data scraping, and Twilio for WhatsApp integration, this solution significantly enhances the user experience and reduces the workload on college administrators.
 
